@@ -25,7 +25,7 @@ console.log(nombre, edad, ciudad, calificacionesNuevas);
 function sumEveryOther(...numbers) {
   let total = 0;
   for (let i = 0; i < numbers.length; i++) {
-    total = total + numbers[i];
+    total += numbers[i];
   }
   return total;
 }
@@ -39,4 +39,4 @@ function sumEveryOther2(...numbers) {
   return suma;
 }
 
-console.log(sumEveryOther2(1, 2, 3, 4, 5));
+console.log(sumEveryOther(1, 2, 3, 4, 5));
