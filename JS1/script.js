@@ -35,8 +35,7 @@ function getSum(total, num) {
 }
 
 function sumEveryOther2(...numbers) {
-  const suma = [...numbers].reduce(getSum, 0);
-  return suma;
+  return numbers.reduce((n1, n2) => n1 + n2);
 }
 
-console.log(sumEveryOther(1, 2, 3, 4, 5));
+console.log(sumEveryOther2(1, 2, 3, 4, 5));
