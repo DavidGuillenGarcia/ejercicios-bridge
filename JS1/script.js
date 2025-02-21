@@ -39,3 +39,59 @@ function sumEveryOther2(...numbers) {
 }
 
 console.log(sumEveryOther2(1, 2, 3, 4, 5));
+
+const pokemon = {
+  name: "Bulbasaur",
+  type: "grass",
+  ability: {
+    primary: "Overgrow",
+    hidden: "Chlorophyll",
+  },
+  stats: {
+    hp: 45,
+    attack: 49,
+    deffense: 59,
+    speed: 45,
+  },
+  moves: ["Growl", "Tackle", "Vine Whip", "Razor Leaf"],
+};
+
+const pikachu = {
+  name: "Pikachu",
+  type: "electric",
+  ability: {
+    primary: "Static",
+    hidden: "Lightning rod",
+  },
+  stats: {
+    hp: 35,
+    attack: 55,
+    deffense: 40,
+    speed: 90,
+  },
+  moves: ["Quick Attack", "Volt Tackle", "Iron Tail", "Thunderbolt"],
+};
+
+var listaPokemon = {};
+
+listaPokemon = { ...pokemon, ...pikachu };
+console.log(listaPokemon);
+
+function combineTwoArrays(array1, array2) {
+  return (newArray = [...array1, ...array2]);
+}
+
+function combineAllArrays(...arrays) {
+  let newArray = [];
+  for (let i = 0; i < arrays.length; i++) {
+    newArray = [...newArray, ...arrays[i]];
+  }
+  return newArray;
+}
+
+const num1 = [1, 2, 3, 4];
+const num2 = [1, 2, 3, 4];
+const num3 = [1, 2, 3, 4];
+const num4 = [1, 2, 3, 4];
+
+console.log(combineAllArrays(num1, num2));
