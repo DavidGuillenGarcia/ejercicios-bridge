@@ -96,3 +96,13 @@ function combineAllArrays(...arrays) {
 }
 
 console.log(combineAllArrays(num1, num2));
+
+const HIGH_TEMPERATURES = {
+  yesterday: 30,
+  today: 35,
+  tomorrow: 32,
+};
+
+const { today: maximaHoy, tomorrow: maximaMañana } = HIGH_TEMPERATURES;
+
+console.log(maximaHoy, maximaMañana);
