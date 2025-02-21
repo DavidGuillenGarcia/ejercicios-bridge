@@ -1,7 +1,7 @@
 window.onload = () => {
   const list = document.getElementById("pokemonList");
   const input = document.getElementById("searchbar");
-  const inputText = input.textContent;
+
 
   const pokemons = [
     {
@@ -35,8 +35,10 @@ window.onload = () => {
   ];
 
   const listPokemon = () => {
+    const inputText = input.value;
     removeChilds();
     for (let i = 0; i < pokemons.length; i++) {
+      console.log(inputText);
       if (!inputText) {
         const newPokemonContainer = document.createElement("div");
         newPokemonContainer.className = "pokemonContainer";
@@ -49,30 +51,32 @@ window.onload = () => {
         newPokemonContainer.appendChild(pokemonName);
         newPokemonContainer.appendChild(jump);
         newPokemonContainer.appendChild(pokemonType);
-      } else if (pokemons[i].name.includes(inputText.toLowerCase())) {
-        const newPokemonContainer = document.createElement("div");
-        newPokemonContainer.className = "pokemonContainer";
-        list.appendChild(newPokemonContainer);
-        const pokemonName = document.createElement("span");
-        const pokemonType = document.createElement("span");
-        const jump = document.createElement("br");
-        pokemonName.textContent = "Pokemon: " + pokemons[i].name;
-        pokemonType.textContent = "Type: " + pokemons[i].type;
-        newPokemonContainer.appendChild(pokemonName);
-        newPokemonContainer.appendChild(jump);
-        newPokemonContainer.appendChild(pokemonType);
+      } else {
+        if(pokemons[i].name.toLowerCase().includes(inputText) == true){
+          const newPokemonContainer = document.createElement("div");
+          newPokemonContainer.className = "pokemonContainer";
+          list.appendChild(newPokemonContainer);
+          const pokemonName = document.createElement("span");
+          const pokemonType = document.createElement("span");
+          const jump = document.createElement("br");
+          pokemonName.textContent = "Pokemon: " + pokemons[i].name;
+          pokemonType.textContent = "Type: " + pokemons[i].type;
+          newPokemonContainer.appendChild(pokemonName);
+          newPokemonContainer.appendChild(jump);
+          newPokemonContainer.appendChild(pokemonType);
+        }
+        else{
+          console.log("No bro");
+        }
       }
     }
   };
 
   input.addEventListener("input", listPokemon);
-  const filterPokemon = (input, name) => {
-    name.includes(input.toLowerCase());
-  };
 
   function removeChilds() {
-    if (document.querySelector(".pokemonContainer")) {
-      list.innerHTML = "";
+    while (list.hasChildNodes()) {
+      list.removeChild(list.firstChild);
     }
   }
 
