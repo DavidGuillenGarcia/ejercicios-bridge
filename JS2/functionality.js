@@ -2,7 +2,6 @@ window.onload = () => {
   const list = document.getElementById("pokemonList");
   const input = document.getElementById("searchbar");
 
-
   const pokemons = [
     {
       name: "Pikachu",
@@ -52,7 +51,7 @@ window.onload = () => {
         newPokemonContainer.appendChild(jump);
         newPokemonContainer.appendChild(pokemonType);
       } else {
-        if(pokemons[i].name.toLowerCase().includes(inputText) == true){
+        if (pokemons[i].name.toLowerCase().includes(inputText) == true) {
           const newPokemonContainer = document.createElement("div");
           newPokemonContainer.className = "pokemonContainer";
           list.appendChild(newPokemonContainer);
@@ -64,9 +63,6 @@ window.onload = () => {
           newPokemonContainer.appendChild(pokemonName);
           newPokemonContainer.appendChild(jump);
           newPokemonContainer.appendChild(pokemonType);
-        }
-        else{
-          console.log("No bro");
         }
       }
     }
