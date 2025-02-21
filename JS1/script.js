@@ -73,13 +73,19 @@ const pikachu = {
 };
 
 var listaPokemon = {};
+const num1 = [1, 2, 3, 4];
+const num2 = [1, 2, 3, 4];
+const num3 = [1, 2, 3, 4];
+const num4 = [1, 2, 3, 4];
 
 listaPokemon = { ...pokemon, ...pikachu };
 console.log(listaPokemon);
 
 function combineTwoArrays(array1, array2) {
-  return (newArray = [...array1, ...array2]);
+  return [...array1, ...array2];
 }
+
+console.log(combineTwoArrays(num1, num2));
 
 function combineAllArrays(...arrays) {
   let newArray = [];
@@ -88,10 +94,5 @@ function combineAllArrays(...arrays) {
   }
   return newArray;
 }
-
-const num1 = [1, 2, 3, 4];
-const num2 = [1, 2, 3, 4];
-const num3 = [1, 2, 3, 4];
-const num4 = [1, 2, 3, 4];
 
 console.log(combineAllArrays(num1, num2));
