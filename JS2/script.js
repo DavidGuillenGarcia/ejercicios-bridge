@@ -1,6 +1,6 @@
 window.onload = () => {
   const list = document.getElementById("pokemonList");
-  const input = document.getElementById("searchbar");
+  const inputBar = document.getElementById("searchbar");
 
   const pokemons = [
     {
@@ -46,7 +46,9 @@ window.onload = () => {
   };
 
   const searchPokemon = (id, input) => {
-    if (pokemons[id].name.toLowerCase().includes(input.toLowerCase())) {
+    if (!inputBar.value) {
+      createPokemon(id);
+    } else if (pokemons[id].name.toLowerCase().includes(input.toLowerCase())) {
       createPokemon(id);
     }
   };
@@ -57,17 +59,13 @@ window.onload = () => {
 
   const listPokemon = () => {
     cleanList();
-    const inputText = input.value;
+
     for (let i = 0; i < pokemons.length; i++) {
-      if (!inputText) {
-        createPokemon(i);
-      } else {
-        searchPokemon(i, inputText);
-      }
+      searchPokemon(i, inputBar.value);
     }
   };
 
-  input.addEventListener("input", listPokemon);
+  inputBar.addEventListener("input", listPokemon);
 
   listPokemon();
 };
