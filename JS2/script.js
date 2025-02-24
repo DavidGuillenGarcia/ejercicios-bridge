@@ -39,11 +39,9 @@ window.onload = () => {
     list.appendChild(newPokemonContainer);
     const pokemonName = document.createElement("span");
     const pokemonType = document.createElement("span");
-    const jump = document.createElement("br");
     pokemonName.textContent = "Pokemon: " + pokemons[id].name;
     pokemonType.textContent = "Type: " + pokemons[id].type;
     newPokemonContainer.appendChild(pokemonName);
-    newPokemonContainer.appendChild(jump);
     newPokemonContainer.appendChild(pokemonType);
   };
 
