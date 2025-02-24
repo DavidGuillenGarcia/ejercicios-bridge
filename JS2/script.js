@@ -48,8 +48,14 @@ window.onload = () => {
   };
 
   const searchPokemon = (id, input) => {
-    if (pokemons[id].name.toLowerCase().includes(input.toLowerCase()) == true) {
+    if (pokemons[id].name.toLowerCase().includes(input.toLowerCase())) {
       createPokemon(id);
+    }
+  };
+
+  const removeChilds = () => {
+    while (list.hasChildNodes()) {
+      list.removeChild(list.firstChild);
     }
   };
 
@@ -62,12 +68,6 @@ window.onload = () => {
       } else {
         searchPokemon(i, inputText);
       }
-    }
-  };
-
-  const removeChilds = () => {
-    while (list.hasChildNodes()) {
-      list.removeChild(list.firstChild);
     }
   };
 
