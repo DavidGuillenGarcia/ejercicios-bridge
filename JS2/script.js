@@ -51,12 +51,12 @@ window.onload = () => {
     }
   };
 
-  const removeChilds = () => {
+  const cleanList = () => {
     list.innerHTML = "";
   };
 
   const listPokemon = () => {
-    removeChilds();
+    cleanList();
     const inputText = input.value;
     for (let i = 0; i < pokemons.length; i++) {
       if (!inputText) {
