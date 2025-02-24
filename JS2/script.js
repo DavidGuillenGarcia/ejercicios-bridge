@@ -48,7 +48,7 @@ window.onload = () => {
   };
 
   const searchPokemon = (id, input) => {
-    if (pokemons[id].name.toLowerCase().includes(input) == true) {
+    if (pokemons[id].name.toLowerCase().includes(input.toLowerCase()) == true) {
       createPokemon(id);
     }
   };
