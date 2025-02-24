@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: black;
+  background-color: white;
+}
+
+main {
+  padding: 1rem;
+}
+
+nav {
+  padding: 20px;
+  background-color: aquamarine;
+}
+
+section {
+  display: flex;
+}
+
+article {
+  width: 100%;
+  padding: 20px;
+  background-color: beige;
+}
+
+aside {
+  width: 100%;
+  background-color: #ffe1e3;
+  padding: 20px;
+}
+
+footer {
+  padding: 20px;
+  background-color: aqua;
+}
+
+.warning {
+  margin: 0 0 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.yellow {
+  background-color: #fdda9c;
+  border-left: 5px solid brown;
+}
+
+.yellow span {
+  display: block;
+}
+
+.red {
+  background-color: #ffe1e3;
+  border-left: 5px solid red;
+}
+
+/* aquí tus css */
