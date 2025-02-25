@@ -3,6 +3,7 @@ window.onload = () => {
   const chiste = document.getElementById("chiste");
 
   const contarChiste = () => {
+    chiste.innerHTML = "Loading...";
     fetch("https://v2.jokeapi.dev/joke/Programming?lang=es")
       .then((response) => response.json())
       .then((data) => {

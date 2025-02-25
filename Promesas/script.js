@@ -5,6 +5,7 @@ const promise1 = new Promise((resolve, reject) => {
     console.log("Primer número: " + randInt);
   }, 1000);
 });
+
 const promise2 = new Promise((resolve, reject) => {
   let randInt = Math.floor(Math.random() * 10);
   setTimeout(() => {
@@ -12,6 +13,7 @@ const promise2 = new Promise((resolve, reject) => {
     console.log("Segundo número: " + randInt);
   }, 2000);
 });
+
 const promise3 = new Promise((resolve, reject) => {
   let randInt = Math.floor(Math.random() * 10);
   setTimeout(() => {
