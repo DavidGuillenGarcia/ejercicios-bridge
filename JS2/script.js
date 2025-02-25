@@ -1,6 +1,7 @@
 window.onload = () => {
   const list = document.getElementById("pokemonList");
   const inputBar = document.getElementById("searchbar");
+  list.className = "d-flex flex-wrap p-2 align-content-center";
 
   const pokemons = [
     {
@@ -35,7 +36,8 @@ window.onload = () => {
 
   const createPokemon = (id) => {
     const newPokemonContainer = document.createElement("div");
-    newPokemonContainer.className = "pokemonContainer";
+    newPokemonContainer.className =
+      "pokemonContainer card card-body m-2 p-3 shadow bg-dark text-white";
     list.appendChild(newPokemonContainer);
     const pokemonName = document.createElement("span");
     const pokemonType = document.createElement("span");
