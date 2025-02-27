@@ -6,35 +6,9 @@ window.onload = () => {
     clearList();
 
     if (searchbar.value == "") {
-      fetch("https://dragonball-api.com/api/characters?limit=1000")
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data.items[1].image);
-          for (let i = 1; i < data.items.length; i++) {
-            createCharacter(
-              data.items[i].name,
-              data.items[i].image,
-              data.items[i].race,
-              data.items[i].ki,
-              data.items[i].description
-            );
-          }
-        });
+      getAllCharacters();
     } else {
-      fetch("https://dragonball-api.com/api/characters?name=" + searchbar.value)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          for (let i = 0; i < data.length; i++) {
-            createCharacter(
-              data[i].name,
-              data[i].image,
-              data[i].race,
-              data[i].ki,
-              data[i].description
-            );
-          }
-        });
+      searchCharacter(searchbar.value);
     }
   };
 
@@ -65,7 +39,39 @@ window.onload = () => {
     newCharacterContainer.appendChild(characterDescription);
   };
 
-  const searchCharacter = (name) => {};
+  const getAllCharacters = () => {
+    fetch("https://dragonball-api.com/api/characters?limit=1000")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.items[1].image);
+        for (let i = 1; i < data.items.length; i++) {
+          createCharacter(
+            data.items[i].name,
+            data.items[i].image,
+            data.items[i].race,
+            data.items[i].ki,
+            data.items[i].description
+          );
+        }
+      });
+  };
+
+  const searchCharacter = (name) => {
+    fetch("https://dragonball-api.com/api/characters?name=" + searchbar.value)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        for (let i = 0; i < data.length; i++) {
+          createCharacter(
+            data[i].name,
+            data[i].image,
+            data[i].race,
+            data[i].ki,
+            data[i].description
+          );
+        }
+      });
+  };
 
   const clearList = () => {
     list.innerHTML = "";
