@@ -39,7 +39,7 @@ window.onload = () => {
 
   const getAllCharacters = () => {
     clearList();
-    fetch("https://dragonball-api.com/api/characters?limit=1000")
+    fetch("https://dragonball-api.com/api/characters")
       .then((response) => response.json())
       .then((data) => {
         console.log(data.items[1].image);
