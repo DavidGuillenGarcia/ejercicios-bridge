@@ -1,7 +1,6 @@
 body {
   background-color: #1e1e1e !important;
 }
-
 .content {
   height: 100dvh;
   display: flex;
@@ -9,6 +8,14 @@ body {
   align-items: center;
 }
 
-span {
-  font-size: 23px;
+.images {
+  max-height: 350px;
+}
+
+.characterContainer {
+  max-width: 350px;
+}
+
+.searchbar {
+  height: 7rem;
 }

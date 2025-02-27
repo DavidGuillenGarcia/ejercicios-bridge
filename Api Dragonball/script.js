@@ -1,0 +1,76 @@
+window.onload = () => {
+  const list = document.getElementById("characterList");
+  const searchbar = document.getElementById("searchbar");
+
+  const fetchCharacters = () => {
+    clearList();
+
+    if (searchbar.value == "") {
+      fetch("https://dragonball-api.com/api/characters?limit=1000")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.items[1].image);
+          for (let i = 1; i < data.items.length; i++) {
+            createCharacter(
+              data.items[i].name,
+              data.items[i].image,
+              data.items[i].race,
+              data.items[i].ki,
+              data.items[i].description
+            );
+          }
+        });
+    } else {
+      fetch("https://dragonball-api.com/api/characters?name=" + searchbar.value)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          for (let i = 0; i < data.length; i++) {
+            createCharacter(
+              data[i].name,
+              data[i].image,
+              data[i].race,
+              data[i].ki,
+              data[i].description
+            );
+          }
+        });
+    }
+  };
+
+  const createCharacter = (name, image, race, ki, description) => {
+    const newCharacterContainer = document.createElement("div");
+    newCharacterContainer.className =
+      "characterContainer card card-body m-2 p-3 shadow bg-dark text-white d-flex align-items-center";
+    list.appendChild(newCharacterContainer);
+    const characterName = document.createElement("h1");
+    const characterImage = document.createElement("img");
+    const characterRace = document.createElement("span");
+    const characterKi = document.createElement("span");
+    const characterDescription = document.createElement("p");
+    characterName.textContent = name;
+    characterImage.src = image;
+    characterName.className = "my-3 p-2";
+    characterImage.className = "images";
+    characterRace.className = "fs-5 mt-2 p-1";
+    characterKi.className = "fs-5 mt-1 p-1";
+    characterDescription.className = " fs-6 p-3";
+    characterRace.textContent = "Race: " + race;
+    characterKi.textContent = "Quantity of ki: " + ki;
+    characterDescription.textContent = description;
+    newCharacterContainer.appendChild(characterName);
+    newCharacterContainer.appendChild(characterImage);
+    newCharacterContainer.appendChild(characterRace);
+    newCharacterContainer.appendChild(characterKi);
+    newCharacterContainer.appendChild(characterDescription);
+  };
+
+  const searchCharacter = (name) => {};
+
+  const clearList = () => {
+    list.innerHTML = "";
+  };
+
+  searchbar.addEventListener("input", fetchCharacters);
+  fetchCharacters();
+};

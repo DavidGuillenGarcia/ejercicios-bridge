@@ -1,0 +1,59 @@
+<!-- *** Lo primero que debes hacer es FORKEAR este documento *** -->
+<!-- *** si tenéis dos veces abierto el mismo proyecto no se refrescará y dará problemas *** -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JS MOLA</title>
+    <link href="./styles.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="warning red">
+          <span
+            >Si tienes dos veces abierto el mismo proyecto no se refrescará y
+            dará problemas. Trabaja siempre desde un solo espacio 💻</span
+          >
+        </div>
+        <div class="warning yellow">
+          <span
+            >Lo primero que debes hacer es <strong><i>FORK</i></strong> de este
+            documento.</span
+          >
+          <span>💾 Recuerda guardar tus cambios para no perderlos.</span>
+        </div>
+      </header>
+      <h2>Asyn/Await</h2>
+      <h3>Ejercicio</h3>
+      <ul>
+        <li>Entra en la API `https://jsonplaceholder.typicode.com/users/`</li>
+        <li>
+          pásale el user ID despues de USER para taraer los siguientes datos
+          (ejemplo https://jsonplaceholder.typicode.com/users/1`)
+        </li>
+        <li>
+          Saca los datos por consola denombre, email y ciudad de los usuarios 1,
+          2 y 3
+        </li>
+        <li>Usa async/await</li>
+      </ul>
+      <p>
+        Hazlo con la solución que se te ocurra, pero puedes intentar hacerlo con
+        un
+        <a
+          href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+          >Promise.all</a
+        >
+        y la suma con el método
+        <a
+          href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce"
+          >Reduce</a
+        >
+      </p>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
