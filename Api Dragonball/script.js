@@ -3,12 +3,10 @@ window.onload = () => {
   const searchbar = document.getElementById("searchbar");
 
   const fetchCharacters = () => {
-    clearList();
-
     if (searchbar.value == "") {
-      getAllCharacters();
+      getAllCharactersDebounce();
     } else {
-      searchCharacter(searchbar.value);
+      searchDebounce();
     }
   };
 
@@ -40,6 +38,7 @@ window.onload = () => {
   };
 
   const getAllCharacters = () => {
+    clearList();
     fetch("https://dragonball-api.com/api/characters?limit=1000")
       .then((response) => response.json())
       .then((data) => {
@@ -56,21 +55,27 @@ window.onload = () => {
       });
   };
 
-  const searchCharacter = (name) => {
-    fetch("https://dragonball-api.com/api/characters?name=" + searchbar.value)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        for (let i = 0; i < data.length; i++) {
-          createCharacter(
-            data[i].name,
-            data[i].image,
-            data[i].race,
-            data[i].ki,
-            data[i].description
-          );
-        }
-      });
+  const searchCharacter = () => {
+    console.log(searchbar.value.length);
+    if (searchbar.value.length >= 3) {
+      clearList();
+      fetch("https://dragonball-api.com/api/characters?name=" + searchbar.value)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          for (let i = 0; i < data.length; i++) {
+            createCharacter(
+              data[i].name,
+              data[i].image,
+              data[i].race,
+              data[i].ki,
+              data[i].description
+            );
+          }
+        });
+    } else if (searchbar.value == "") {
+      getAllCharactersDebounce();
+    }
   };
 
   const clearList = () => {
@@ -78,5 +83,22 @@ window.onload = () => {
   };
 
   searchbar.addEventListener("input", fetchCharacters);
+
+  const debounce = (mainFunction, delay) => {
+    let timer;
+
+    return function (...args) {
+      clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        mainFunction(...args);
+      }, delay);
+    };
+  };
+
+  const searchDebounce = debounce(searchCharacter, 900);
+
+  const getAllCharactersDebounce = debounce(getAllCharacters, 100);
+
   fetchCharacters();
 };
