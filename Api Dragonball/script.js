@@ -3,6 +3,8 @@ window.onload = () => {
   const searchbar = document.getElementById("searchbar");
   const previous = document.getElementById("previous");
   const next = document.getElementById("next");
+  let actualPage = 1;
+  previous.style.visibility = "hidden";
 
   const fetchCharacters = () => {
     if (searchbar.value == "") {
@@ -41,11 +43,15 @@ window.onload = () => {
 
   const getAllCharacters = () => {
     clearList();
-    fetch("https://dragonball-api.com/api/characters?page=1&limit=7")
+    fetch(
+      "https://dragonball-api.com/api/characters?page=" +
+        actualPage +
+        "&limit=5"
+    )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.items[1].image);
-        for (let i = 1; i < data.items.length; i++) {
+        console.log(data);
+        for (let i = 0; i < data.items.length; i++) {
           createCharacter(
             data.items[i].name,
             data.items[i].image,
@@ -54,6 +60,8 @@ window.onload = () => {
             data.items[i].description
           );
         }
+        console.log(data.meta.totalPages);
+        checkButtons(actualPage, data.meta.totalPages);
       });
   };
 
@@ -99,15 +107,70 @@ window.onload = () => {
   };
 
   const checkButtons = (page, pageLength) => {
+    previous.style.visibility = "visible";
+    previous.style.visibility = "visible";
     if (page == 1) {
-      previous.visivility(hidden);
-    } else if (page > 1 && page < pageLength) {
-      previous.visivility(visible);
-      previous.visivility(visible);
-    } else {
-      next.visivility(hidden);
+      previous.style.visibility = "hidden";
+    } else if (page == pageLength) {
+      next.style.visibility = "hidden";
     }
   };
+
+  const previousPage = () => {
+    actualPage = actualPage - 1;
+    clearList();
+    fetch(
+      "https://dragonball-api.com/api/characters?page=" +
+        actualPage +
+        "&limit=5"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        for (let i = 0; i < data.items.length; i++) {
+          createCharacter(
+            data.items[i].name,
+            data.items[i].image,
+            data.items[i].race,
+            data.items[i].ki,
+            data.items[i].description
+          );
+        }
+
+        console.log(data.meta.totalPages);
+        checkButtons(actualPage, data.meta.totalPages);
+      });
+  };
+
+  const nextPage = () => {
+    actualPage = actualPage + 1;
+    clearList();
+    fetch(
+      "https://dragonball-api.com/api/characters?page=" +
+        actualPage +
+        "&limit=5"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        for (let i = 0; i < data.items.length; i++) {
+          createCharacter(
+            data.items[i].name,
+            data.items[i].image,
+            data.items[i].race,
+            data.items[i].ki,
+            data.items[i].description
+          );
+        }
+
+        console.log(data.meta.totalPages);
+        checkButtons(actualPage, data.meta.totalPages);
+      });
+  };
+
+  next.addEventListener("click", nextPage);
+
+  previous.addEventListener("click", previousPage);
 
   const searchDebounce = debounce(searchCharacter, 900);
 
