@@ -1,6 +1,8 @@
 window.onload = () => {
   const list = document.getElementById("characterList");
   const searchbar = document.getElementById("searchbar");
+  const previous = document.getElementById("previous");
+  const next = document.getElementById("next");
 
   const fetchCharacters = () => {
     if (searchbar.value == "") {
@@ -39,7 +41,7 @@ window.onload = () => {
 
   const getAllCharacters = () => {
     clearList();
-    fetch("https://dragonball-api.com/api/characters")
+    fetch("https://dragonball-api.com/api/characters?page=1&limit=7")
       .then((response) => response.json())
       .then((data) => {
         console.log(data.items[1].image);
@@ -94,6 +96,17 @@ window.onload = () => {
         mainFunction(...args);
       }, delay);
     };
+  };
+
+  const checkButtons = (page, pageLength) => {
+    if (page == 1) {
+      previous.visivility(hidden);
+    } else if (page > 1 && page < pageLength) {
+      previous.visivility(visible);
+      previous.visivility(visible);
+    } else {
+      next.visivility(hidden);
+    }
   };
 
   const searchDebounce = debounce(searchCharacter, 900);
