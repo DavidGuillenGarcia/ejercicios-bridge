@@ -51,37 +51,6 @@ window.onload = () => {
     );
   };
 
-  const createPlanet = (id, name, image, description) => {
-    const newPlanetModalContainer = document.createElement("div");
-    newPlanetModalContainer.id = id;
-    newPlanetModalContainer.className =
-      "characterContainer modal-dialog modal-dialog-centered bg-dark text-white d-flex align-items-center";
-    list.appendChild(newCharacterContainer);
-    const characterName = document.createElement("h1");
-    const characterImage = document.createElement("img");
-    const characterRace = document.createElement("span");
-    const characterKi = document.createElement("span");
-    const characterDescription = document.createElement("p");
-    characterName.textContent = name;
-    characterImage.src = image;
-    characterName.className = "my-3 p-2";
-    characterImage.className = "images";
-    characterRace.className = "fs-5 mt-2 p-1";
-    characterKi.className = "fs-5 mt-1 p-1";
-    characterDescription.className = " fs-6 p-3";
-    characterRace.textContent = "Race: " + race;
-    characterKi.textContent = "Quantity of ki: " + ki;
-    characterDescription.textContent = description;
-    newCharacterContainer.appendChild(characterName);
-    newCharacterContainer.appendChild(characterImage);
-    newCharacterContainer.appendChild(characterRace);
-    newCharacterContainer.appendChild(characterKi);
-    newCharacterContainer.appendChild(characterDescription);
-    newCharacterContainer.addEventListener("click", () =>
-      getPlanetFromCharacter(id)
-    );
-  };
-
   const getAllCharacters = () => {
     clearList();
     fetch(
