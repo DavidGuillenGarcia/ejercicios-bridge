@@ -21,13 +21,76 @@
   <body>
     <div id="content" class="content mt-5">
       <h1 class="text-white my-4">Personajes de Dragonball</h1>
-      <input
-        type="search"
-        name="searchbar"
-        id="searchbar"
-        class="form-control-lg my-4 w-25 rounded rounded-3 px-2"
-        placeholder="Search for a character"
-      />
+      <div class="searchOptions d-flex my-3">
+        <div class="searchContainer d-flex align-items-center mx-3">
+          <input
+            type="search"
+            name="searchbar"
+            id="searchbar"
+            class="form-control my-4 rounded rounded-3 px-2"
+            placeholder="Search for a character"
+          />
+        </div>
+        <div class="filterContainer d-flex align-items-center my-3">
+          <select
+            id="genderSelect"
+            class="form-select genderSelect mx-2"
+            aria-label="Default select example"
+            name="gender"
+          >
+            <option selected value="-">Select a gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+          <select
+            id="raceSelect"
+            class="form-select raceSelect mx-2"
+            aria-label="Default select example"
+            name="race"
+          >
+            <option selected value="-">Select a race</option>
+            <option value="Human">Human</option>
+            <option value="Saiyan">Saiyan</option>
+            <option value="Namekian">Namekian</option>
+            <option value="Majin">Majin</option>
+            <option value="Frieza Race">Frieza Race</option>
+            <option value="Android">Android</option>
+            <option value="Jiren Race">Jiren Race</option>
+            <option value="God">God</option>
+            <option value="Angel">Angel</option>
+            <option value="Evil">Evil</option>
+            <option value="Nucleico">Nucleico</option>
+            <option value="Nucleico Benigno">Nucleico Benigno</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+
+          <select
+            id="affiliationSelect"
+            class="form-select affiliationSelect mx-2"
+            aria-label="Default select example"
+            name="affiliation"
+          >
+            <option selected value="-">Select an affiliation</option>
+            <option value="Z Fighter">Z Fighter</option>
+            <option value="Red Ribbon Army">Red Ribbon Army</option>
+            <option value="Namekian Warrior">Namekian Warrior</option>
+            <option value="Freelancer">Freelancer</option>
+            <option value="Army of Frieza">Army of Frieza</option>
+            <option value="Pride Troopers">Pride Troopers</option>
+            <option value="Assistant of Vermoud">Assistant of Vermoud</option>
+            <option value="God">God</option>
+            <option value="Assistant of Beerus">Assistant of Beerus</option>
+            <option value="Villain">Villain</option>
+            <option value="Other">Other</option>
+          </select>
+          <input
+            class="btn btn-dark mx-2"
+            type="button"
+            value="Clear filters"
+          />
+        </div>
+      </div>
       <div
         id="characterList"
         class="list px-4 d-flex justify-content-around flex-wrap text-white fs-3"
@@ -48,6 +111,39 @@
           class="btn btn-lg btn-dark shadow"
           value="Next"
         />
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="d-flex justify-content-end pe-3 pt-3">
+            <h5 class="modal-title" id="myModalLabel"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div
+            class="modal-body d-flex justify-content-center flex-column align-items-center"
+          >
+            <h2 id="planetName" class="pb-2 mb-3"></h2>
+            <img
+              id="planetImage"
+              src=""
+              alt="Planet Image"
+              class="img-fluid rounded pb-2 mb-3"
+            />
+            <p id="planetDescription"></p>
+          </div>
+        </div>
       </div>
     </div>
   </body>
