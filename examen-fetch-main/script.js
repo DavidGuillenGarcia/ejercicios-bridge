@@ -34,7 +34,7 @@ window.onload = () => {
   //     return array;
   //   };
 
-  //Devuelve el array que se pasa por la función y no el array filtrado, dejo la corrección a continuación
+  //El fallo que tiene es que devuelve el array que se pasa por la función y no el array filtrado, dejo la corrección a continuación
 
   const filtrar_por_Nombre = (array, nombre) => {
     var filteredArray = array.filter((x) => x.includes(nombre));
