@@ -8,7 +8,7 @@ window.onload = () => {
       count.innerText = localStorage.getItem("views");
     } else {
       let storedViews = JSON.parse(localStorage.getItem("views"));
-      storedViews = storedViews + 1;
+      storedViews++;
       count.innerText = storedViews;
       localStorage.setItem("views", storedViews);
     }
