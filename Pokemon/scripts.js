@@ -47,6 +47,6 @@ window.onload = () => {
   changepokemonFlyingTypeBackground();
 
   console.log(window.location.href);
-  console.log(document.location.hostname);
+  console.log(window.location.hostname);
   console.log(localStorage.getItem("favorite"));
 };
