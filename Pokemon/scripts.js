@@ -2,7 +2,15 @@ window.onload = () => {
   const tittle = document.getElementById("gen-1");
   tittle.innerText = "Generasión 1 Pokimon";
 
-  const generation1 = document.querySelectorAll(".infocard-list .infocard");
+  const generation1 = document.querySelectorAll(".infocard-list");
+  const pokemon1 = generation1[0].querySelectorAll(".infocard");
+
+  const changeColor = () => {
+    pokemon1.forEach((pokemonGen1) => {
+      pokemonGen1.style.backgroundColor = "aquamarine";
+    });
+  };
+
   const images = document.querySelectorAll("img");
   const pokemonFlyingType = document.querySelectorAll(".infocard");
 
@@ -20,12 +28,6 @@ window.onload = () => {
     "favorite",
     JSON.stringify(pokemon)
   );
-
-  const changeColor = () => {
-    generation1.forEach((pokemonGen1) => {
-      pokemonGen1.style.backgroundColor = "aquamarine";
-    });
-  };
 
   const changeImage = () => {
     images.forEach((image) => {
