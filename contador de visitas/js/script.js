@@ -16,6 +16,7 @@ window.onload = () => {
 
   const deleteViews = () => {
     localStorage.removeItem("views");
+    count.innerText = 0;
   };
 
   restartBtn.addEventListener("click", deleteViews);
