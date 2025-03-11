@@ -37,7 +37,8 @@ window.onload = () => {
 
   const changepokemonFlyingTypeBackground = () => {
     pokemonFlyingType.forEach((FlyingType) => {
-      FlyingType.parentNode.parentNode.style.backgroundColor = "grey";
+      FlyingType.parentNode.parentNode.parentNode.style.backgroundColor =
+        "lightgrey";
     });
   };
 
