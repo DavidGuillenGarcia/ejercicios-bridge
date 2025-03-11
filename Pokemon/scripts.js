@@ -25,6 +25,23 @@ window.onload = () => {
     }
   };
 
+  const pokemon = {
+    name: "Nidoqueen",
+    id: "31",
+    type: "Poison",
+    secondary_type: "Ground",
+    hability1: "Poison point",
+    hability2: "Rivalry",
+    hidden_hability: "Sheer Force",
+  };
+
+  const favoritePokemon = localStorage.setItem(
+    "favorite",
+    JSON.stringify(pokemon)
+  );
+
+  console.log(localStorage.getItem("favorite"));
+
   changeColor();
   changeImage();
   changeFlyingTypeBackground();
