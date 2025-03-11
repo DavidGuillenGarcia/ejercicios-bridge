@@ -2,10 +2,9 @@ window.onload = () => {
   const tittle = document.getElementById("gen-1");
   tittle.innerText = "Generasión 1 Pokimon";
 
-  const generation1 = document.querySelector(".infocard-list");
-  const pokemon1 = generation1.querySelectorAll(".infocard");
+  const generation1 = document.querySelectorAll(".infocard-list .infocard");
   const images = document.querySelectorAll("img");
-  const flyingType = document.querySelectorAll(
+  const pokemonFlyingType = document.querySelectorAll(
     ".infocard-lg-data small .flying"
   );
 
@@ -25,26 +24,26 @@ window.onload = () => {
   );
 
   const changeColor = () => {
-    for (let i = 0; i < pokemon1.length; i++) {
-      pokemon1[i].style.backgroundColor = "aquamarine";
-    }
+    generation1.forEach((pokemonGen1) => {
+      pokemonGen1.style.backgroundColor = "aquamarine";
+    });
   };
 
   const changeImage = () => {
-    for (let i = 0; i < images.length; i++) {
-      images[i].src = "https://media.giphy.com/media/2v170e71aanfi/giphy.gif";
-    }
+    images.forEach((image) => {
+      image.src = "https://media.giphy.com/media/2v170e71aanfi/giphy.gif";
+    });
   };
 
-  const changeFlyingTypeBackground = () => {
-    for (let i = 0; i < flyingType.length; i++) {
-      flyingType[i].parentNode.parentNode.style.backgroundColor = "grey";
-    }
+  const changepokemonFlyingTypeBackground = () => {
+    pokemonFlyingType.forEach((FlyingType) => {
+      FlyingType.parentNode.parentNode.style.backgroundColor = "grey";
+    });
   };
 
   changeColor();
   changeImage();
-  changeFlyingTypeBackground();
+  changepokemonFlyingTypeBackground();
 
   console.log(window.location.href);
   console.log(document.location.hostname);
