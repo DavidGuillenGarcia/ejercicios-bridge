@@ -4,9 +4,7 @@ window.onload = () => {
 
   const generation1 = document.querySelectorAll(".infocard-list .infocard");
   const images = document.querySelectorAll("img");
-  const pokemonFlyingType = document.querySelectorAll(
-    ".infocard-lg-data small .flying"
-  );
+  const pokemonFlyingType = document.querySelectorAll(".infocard");
 
   const pokemon = {
     name: "Nidoqueen",
@@ -37,8 +35,9 @@ window.onload = () => {
 
   const changepokemonFlyingTypeBackground = () => {
     pokemonFlyingType.forEach((FlyingType) => {
-      FlyingType.parentNode.parentNode.parentNode.style.backgroundColor =
-        "lightgrey";
+      if (FlyingType.innerHTML.includes("flying")) {
+        FlyingType.style.backgroundColor = "lightgrey";
+      }
     });
   };
 
