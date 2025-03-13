@@ -22,7 +22,7 @@ window.onload = () => {
   const deleteJoke = (event) => {
     let jokeId = event.target.name;
     console.log(jokeId);
-    let newJokeArray = jokesArray.splice(1, jokeId);
+    const newJokeArray = jokesArray.splice(1, jokeId);
     console.log(newJokeArray);
     localStorage.setItem("storedJokes", JSON.stringify(newJokeArray));
 
