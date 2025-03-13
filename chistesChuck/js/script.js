@@ -9,41 +9,43 @@ window.onload = () => {
     fetch("https://api.chucknorris.io/jokes/random")
       .then((response) => response.json())
       .then((data) => {
-        jokesArray.push(data.value);
-        createAJoke(data.value, data.id);
-
-        let deleteButtons = document.querySelectorAll(".deleteBtn");
-        deleteButtons.forEach((button) => {
-          button.addEventListener("click", deleteJoke);
-        });
+        saveJoke(data.value);
+        listStoragedJokes();
       });
   };
 
-  const createAJoke = (joke) => {
-    let newJoke = `<div class='my-3 mt-5 d-flex flex-column joke-card shadow rounded rounded-3 py-3 px-4'><span class='fs-5 mb-3'>${joke}</span><div class='buttons d-flex justify-content-center'><input type='button' class='btn btn-danger deleteBtn' value='Delete joke'/></div></div>`;
-    jokesContainer.innerHTML += newJoke;
-    saveJoke();
+  const saveJoke = (value) => {
+    jokesArray.push(value);
+    localStorage.setItem("storedJokes", JSON.stringify(jokesArray));
   };
 
   const deleteJoke = (event) => {
-    let jokeText = event.target.name;
-    let jokeCardContainer = document.getElementById(jokeText);
-    jokeCardContainer.remove();
+    let jokeId = event.target.name;
+    console.log(jokeId);
+    let newJokeArray = jokesArray.splice(1, jokeId);
+    console.log(newJokeArray);
+    localStorage.setItem("storedJokes", JSON.stringify(newJokeArray));
+
+    if (JSON.parse(localStorage.getItem("storedJokes")).length > 0) {
+      console.log("Entra");
+      listStoragedJokes();
+    } else {
+      jokesContainer.innerHTML = "";
+    }
   };
 
   const listStoragedJokes = () => {
-    console.log("Entra");
-    jokesArray.forEach((joke) => {
-      createAJoke(joke);
+    let index = 0;
+    jokesContainer.innerHTML = "";
+    let newJokeArray = JSON.parse(localStorage.getItem("storedJokes"));
+    newJokeArray.forEach((joke) => {
+      let newJoke = `<div class='my-3 mt-5 d-flex flex-column joke-card shadow rounded rounded-3 py-3 px-4'><span class='fs-5 mb-3'>${joke}</span><div class='buttons d-flex justify-content-center'><input type='button' class='btn btn-danger deleteBtn' name='${index++}' value='Delete joke'/></div></div>`;
+      jokesContainer.innerHTML += newJoke;
     });
-  };
-
-  const deleteStoredJokes = () => {
-    localStorage.removeItem("storedJokes");
-  };
-
-  const saveJoke = () => {
-    localStorage.setItem("storedJokes", JSON.stringify(jokesArray));
+    let deleteButtons = document.querySelectorAll(".deleteBtn");
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", deleteJoke);
+    });
   };
 
   if (localStorage.getItem("storedJokes")) {
@@ -51,6 +53,10 @@ window.onload = () => {
     jokesArray = storagedJokes;
     listStoragedJokes();
   }
+  const deleteStoredJokes = () => {
+    localStorage.removeItem("storedJokes");
+    jokesContainer.innerHTML = "";
+  };
 
   jokeBtn.addEventListener("click", fetchAJoke);
   clearDeletedJokes.addEventListener("click", deleteStoredJokes);
