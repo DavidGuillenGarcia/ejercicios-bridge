@@ -18,5 +18,56 @@
     crossorigin="anonymous"
   ></script>
   <script src="script.js"></script>
-  <body></body>
+  <body>
+    <div
+      class="content d-flex justify-content-center align-items-center flex-column"
+    >
+      <h1 class="m-4">Videogame Quiz</h1>
+      <div
+        class="quiz-container d-flex flex-column align-items-center shadow rounded rounded-3 p-4 fs-5 mt-4"
+      >
+        <span class="fs-3">Prueba de pregunta</span>
+        <div
+          class="form-check quiz-questions d-flex flex-column justify-content-between mt-3"
+        >
+          <div class="question1 d-flex justify-content-center">
+            <input
+              class="form-check-input me-2"
+              type="radio"
+              name="flexRadioDefault"
+              id="radio1"
+            />
+            <label class="form-check-label" for="radio1"> Default radio </label>
+            <input
+              class="form-check-input me-2"
+              type="radio"
+              name="flexRadioDefault"
+              id="radio2"
+            />
+            <label class="form-check-label" for="radio2"> Default radio </label>
+          </div>
+          <div class="question3 d-flex justify-content-center">
+            <input
+              class="form-check-input me-2"
+              type="radio"
+              name="flexRadioDefault"
+              id="radio3"
+            />
+            <label class="form-check-label" for="radio3"> Default radio </label>
+            <input
+              class="form-check-input me-2"
+              type="radio"
+              name="flexRadioDefault"
+              id="radio4"
+            />
+            <label class="form-check-label" for="radio4"> Default radio </label>
+          </div>
+          <div class="buttons d-flex justify-content-around mt-3">
+            <input type="button" class="btn btn-lg btn-dark" value="Back" />
+            <input type="button" class="btn btn-lg btn-dark" value="Next" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
