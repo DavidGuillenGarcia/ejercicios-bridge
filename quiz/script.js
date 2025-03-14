@@ -12,19 +12,8 @@ window.onload = () => {
   //     .then((response) => response.json())
   //     .then((data) => {
   //       const jsonData = data.results;
-
   //       console.log(jsonData);
-
   //       localStorage.setItem("questions", JSON.stringify(jsonData));
-
-  //       createQuestion(
-  //         jsonData[0].question,
-  //         index++,
-  //         jsonData[0].correct_answer,
-  //         jsonData[0].incorrect_answers[0],
-  //         jsonData[0].incorrect_answers[1],
-  //         jsonData[0].incorrect_answers[2]
-  //       );
   //     });
   // };
 
