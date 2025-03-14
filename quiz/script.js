@@ -40,10 +40,17 @@ window.onload = () => {
 
     let optionsRandomized = [];
 
+    let checkResult = [];
+
     while (optionsRandomized.length < options.length) {
       let randomPosition = Math.floor(Math.random() * options.length);
       if (!optionsRandomized.includes(options[randomPosition])) {
         optionsRandomized.push(options[randomPosition]);
+        if (options[0] == options[randomPosition]) {
+          checkResult.push("correct");
+        } else {
+          checkResult.push("incorrect");
+        }
       }
     }
 
@@ -65,6 +72,7 @@ window.onload = () => {
                   <input
                     class="form-check-input me-2"
                     type="radio"
+                    value="${checkResult[0]}"
                     name="flexRadioDefault"
                     id="radio1"
                   />
@@ -78,6 +86,7 @@ window.onload = () => {
                   <input
                     class="form-check-input me-2"
                     type="radio"
+                     value="${checkResult[1]}"
                     name="flexRadioDefault"
                     id="radio2"
                   />
@@ -93,6 +102,7 @@ window.onload = () => {
                   <input
                     class="form-check-input me-2"
                     type="radio"
+                     value="${checkResult[2]}"
                     name="flexRadioDefault"
                     id="radio3"
                   />
@@ -106,6 +116,7 @@ window.onload = () => {
                   <input
                     class="form-check-input me-2"
                     type="radio"
+                     value="${checkResult[3]}"
                     name="flexRadioDefault"
                     id="radio4"
                   />
