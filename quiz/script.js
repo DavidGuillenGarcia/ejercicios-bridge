@@ -19,7 +19,13 @@ const fetchQuestions = () => {
 };
 
 const createQuestion = (question, correctOption, option1, option2, option3) => {
-  console.log(question, correctOption, option1, option2, option3);
+  const options = [correctOption, option1, option2, option3];
+
+  let optionsRandomized = [];
+  options.forEach((option) => {
+    let randomPosition = Math.floor(Math.random() * options.length);
+    optionsRandomized.push(options[randomPosition]);
+  });
 };
 
 fetchQuestions();

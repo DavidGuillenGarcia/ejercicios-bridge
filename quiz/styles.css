@@ -1,7 +1,30 @@
+body {
+  background-color: #1e1e1e !important;
+}
+
 .content {
   height: 100vh;
 }
 
 .quiz-container {
   min-width: 700px;
+  min-height: 300px;
+}
+
+.form-check {
+  min-width: 700px;
+  min-height: 300px;
+}
+
+.quiz-question-row {
+  min-width: 350px;
+}
+
+.question {
+  min-height: 100px;
+}
+
+.btn {
+  min-width: 235px;
+  min-height: 55px;
 }
