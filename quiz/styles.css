@@ -21,10 +21,19 @@ body {
 }
 
 .question {
-  min-height: 100px;
+  min-height: 125px;
+  min-width: 500;
 }
 
 .btn {
-  min-width: 235px;
+  min-width: 215px;
   min-height: 55px;
+}
+
+.text-question {
+  max-width: 600px !important;
+}
+
+.hidden {
+  display: none !important;
 }
