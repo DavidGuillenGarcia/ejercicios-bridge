@@ -35,15 +35,17 @@ window.onload = () => {
       .then((response) => response.json())
       .then((data) => {
         pageLength = data.info.pages;
-        for (let i = 0; i < data.results.length; i++) {
+        let characters = data.results;
+
+        characters.forEach((character) => {
           createCharacter(
-            data.results[i].id,
-            data.results[i].name,
-            data.results[i].image,
-            data.results[i].origin.name,
-            data.results[i].status
+            character.id,
+            character.name,
+            character.image,
+            character.origin.name,
+            character.status
           );
-        }
+        });
       });
   };
 
@@ -53,16 +55,17 @@ window.onload = () => {
       fetch(baseURL + "?name=" + searchbar.value)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          for (let i = 0; i < data.results.length; i++) {
+          let characters = data.results;
+
+          characters.forEach((character) => {
             createCharacter(
-              data.results[i].id,
-              data.results[i].name,
-              data.results[i].image,
-              data.results[i].origin.name,
-              data.results[i].status
+              character.id,
+              character.name,
+              character.image,
+              character.origin.name,
+              character.status
             );
-          }
+          });
         });
     } else if (searchbar.value == "") {
       getAllCharactersDebounce();
