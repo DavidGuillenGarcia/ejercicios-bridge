@@ -1,0 +1,17 @@
+body {
+  background-color: #1e1e1e !important;
+}
+.content {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.images {
+  max-height: 350px;
+}
+
+.characterContainer {
+  max-width: 350px;
+}
