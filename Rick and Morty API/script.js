@@ -6,6 +6,7 @@ window.onload = () => {
   const previous = document.getElementById("previous");
   previous.classList.add("hidden");
 
+  const baseURL = "https://rickandmortyapi.com/api/character/";
   let index = 1;
   let pageLength = 0;
 
@@ -30,7 +31,7 @@ window.onload = () => {
 
   const getAllCharacters = (index) => {
     clearList();
-    fetch("https://rickandmortyapi.com/api/character/?page=" + index)
+    fetch(baseURL + "?page=" + index)
       .then((response) => response.json())
       .then((data) => {
         pageLength = data.info.pages;
@@ -47,12 +48,9 @@ window.onload = () => {
   };
 
   const searchCharacter = () => {
-    console.log(searchbar.value.length);
     if (searchbar.value.length >= 3) {
       clearList();
-      fetch(
-        "https://rickandmortyapi.com/api/character/?name=" + searchbar.value
-      )
+      fetch(baseURL + "?name=" + searchbar.value)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -112,13 +110,10 @@ window.onload = () => {
   };
 
   const searchDebounce = debounce(searchCharacter, 900);
-
   const getAllCharactersDebounce = debounce(getAllCharacters, 100);
 
   searchbar.addEventListener("input", fetchCharacters);
-
   next.addEventListener("click", nextPage);
-
   previous.addEventListener("click", previousPage);
 
   fetchCharacters();
