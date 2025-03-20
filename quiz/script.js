@@ -1,7 +1,8 @@
 window.onload = () => {
   const quizContainer = document.getElementById("quiz-container");
-  const nextBtn = document.getElementById("nextPage");
-  const lastBtn = document.getElementById("lastPage");
+  const nextBtn = document.getElementById("nextBtn");
+  const sendBtn = document.getElementById("sendBtn");
+  sendBtn.classList.add("hidden");
 
   let pageIndex = 0;
 
@@ -120,16 +121,12 @@ window.onload = () => {
 
   const displayQuestion = (index) => {
     hideQuestions();
-    lastBtn.classList.add("hidden");
-    nextBtn.classList.add("hidden");
     let questionId = "question" + index;
     document.getElementById(questionId).classList.remove("hidden");
 
-    if (index > 0) {
-      lastBtn.classList.remove("hidden");
-    }
-    if (index < 9) {
-      nextBtn.classList.remove("hidden");
+    if (index == 9) {
+      nextBtn.classList.add("hidden");
+      sendBtn.classList.remove("hidden");
     }
   };
 
@@ -162,15 +159,8 @@ window.onload = () => {
     displayQuestion(pageIndex);
   };
 
-  const lastPage = () => {
-    pageIndex--;
-    displayQuestion(pageIndex);
-  };
-
   const createPagination = () => {
     nextBtn.addEventListener("click", nextPage);
-
-    lastBtn.addEventListener("click", lastPage);
   };
 
   createPagination();
