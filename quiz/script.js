@@ -49,9 +49,8 @@ window.onload = () => {
           </div>
   
          <div
-            class="form-check quiz d-flex flex-column justify-content-center mt-3 py-4 px-2"
+            class="form-check quiz d-flex justify-content-center mt-3 py-4 px-2"
           >
-            <div class="quiz-questions d-flex justify-content-around px-2">
               <div class="quiz-question-row">
                 <div
                   class="question d-flex justify-content-between align-items-center px-4 bg-danger text-light m-3 rounded rounded-3"
@@ -113,7 +112,6 @@ window.onload = () => {
                 </div>
               </div>
             </div>
-          </div>
           </div>`;
 
     quizContainer.innerHTML += newQuestion;
