@@ -18,27 +18,14 @@ window.onload = () => {
   };
 
   const createCharacter = (id, name, image, origin, status) => {
-    const newCharacterContainer = document.createElement("div");
-    newCharacterContainer.id = id;
-    newCharacterContainer.className =
-      "characterContainer card card-body m-2 p-3 shadow bg-dark text-white d-flex align-items-center";
-    list.appendChild(newCharacterContainer);
-    const characterName = document.createElement("h1");
-    const characterImage = document.createElement("img");
-    const characterOrigin = document.createElement("span");
-    const characterStatus = document.createElement("span");
-    characterName.textContent = name;
-    characterImage.src = image;
-    characterName.className = "my-3 p-2";
-    characterImage.className = "images";
-    characterOrigin.className = "fs-5 mt-2 p-1";
-    characterStatus.className = "fs-5 mt-1 p-1";
-    characterOrigin.textContent = "Origin: " + origin;
-    characterStatus.textContent = "Status of the character: " + status;
-    newCharacterContainer.appendChild(characterName);
-    newCharacterContainer.appendChild(characterImage);
-    newCharacterContainer.appendChild(characterOrigin);
-    newCharacterContainer.appendChild(characterStatus);
+    const newCharacterContainer = `<div id="${id}" 
+        class="characterContainer card card-body m-2 p-3 shadow bg-dark text-white d-flex align-items-center">
+        <h1 class="my-3 p-2">${name}</h1>
+        <img src="${image}" class="images" />
+        <span class="fs-5 mt-2 p-1">Origin: ${origin}</span>
+        <span class="fs-5 mt-2 p-1">Status of the character: ${status}</span>
+      </div>`;
+    list.innerHTML += newCharacterContainer;
   };
 
   const getAllCharacters = (index) => {
