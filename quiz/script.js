@@ -44,7 +44,7 @@ window.onload = () => {
       }
     }
 
-    let newQuestion = `<div id="question${questionId}" class="hidden"> <div class="question-text text-light mt-5 d-flex justify-content-center">
+    let newQuestion = `<div id="question${questionId}" class="hidden"> <div class="question-text text-light mt-5 d-flex justify-content-center align-items-center">
             <span class="fs-4 text-question">${question}</span>
           </div>
   

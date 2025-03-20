@@ -34,6 +34,10 @@ body {
   max-width: 600px !important;
 }
 
+.question-text {
+  min-height: 125px;
+}
+
 .hidden {
   display: none !important;
 }
