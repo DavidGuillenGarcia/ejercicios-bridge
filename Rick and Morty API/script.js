@@ -1,10 +1,13 @@
 window.onload = () => {
   const list = document.getElementById("characterList");
   const searchbar = document.getElementById("searchbar");
-  const previous = document.getElementById("previous");
   const next = document.getElementById("next");
+
+  const previous = document.getElementById("previous");
   previous.classList.add("hidden");
+
   let index = 1;
+  let pageLength = 0;
 
   const fetchCharacters = () => {
     if (searchbar.value == "") {
@@ -43,8 +46,7 @@ window.onload = () => {
     fetch("https://rickandmortyapi.com/api/character/?page=" + index)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.results);
-        console.log(data);
+        pageLength = data.info.pages;
         for (let i = 0; i < data.results.length; i++) {
           createCharacter(
             data.results[i].id,
@@ -111,46 +113,15 @@ window.onload = () => {
   const previousPage = () => {
     index--;
     clearList();
-    fetch("https://rickandmortyapi.com/api/character/?page=" + index)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        for (let i = 0; i < data.results.length; i++) {
-          createCharacter(
-            data.results[i].id,
-            data.results[i].name,
-            data.results[i].image,
-            data.results[i].origin.name,
-            data.results[i].status
-          );
-        }
-
-        console.log(data.info.pages);
-        checkButtons(index, data.info.pages);
-      });
+    getAllCharacters(index);
+    checkButtons(index, pageLength);
   };
 
   const nextPage = () => {
-    console.log(index);
     index++;
     clearList();
-    fetch("https://rickandmortyapi.com/api/character/?page=" + index)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        for (let i = 0; i < data.results.length; i++) {
-          createCharacter(
-            data.results[i].id,
-            data.results[i].name,
-            data.results[i].image,
-            data.results[i].origin.name,
-            data.results[i].status
-          );
-        }
-
-        console.log(data.info.pages);
-        checkButtons(index, data.info.pages);
-      });
+    getAllCharacters(index);
+    checkButtons(index, pageLength);
   };
 
   const searchDebounce = debounce(searchCharacter, 900);
