@@ -1,7 +1,6 @@
 window.onload = () => {
   const list = document.getElementById("characterList");
   const baseURL = "https://rickandmortyapi.com/api/character/";
-  let index = 1;
 
   const createCharacter = (id, name, image, origin, status) => {
     const newCharacterContainer = `<div id="${id}" 
@@ -14,9 +13,9 @@ window.onload = () => {
     list.innerHTML += newCharacterContainer;
   };
 
-  const getAllCharacters = (index) => {
+  const getAllCharacters = () => {
     clearList();
-    fetch(baseURL + "?page=" + index)
+    fetch(baseURL)
       .then((response) => response.json())
       .then((data) => {
         let characters = data.results;
@@ -37,5 +36,5 @@ window.onload = () => {
     list.innerHTML = "";
   };
 
-  getAllCharacters(index);
+  getAllCharacters();
 };
