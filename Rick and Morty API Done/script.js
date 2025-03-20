@@ -7,7 +7,7 @@ window.onload = () => {
     const newCharacterContainer = `<div id="${id}" 
         class="characterContainer card card-body m-2 p-3 shadow bg-dark text-white d-flex align-items-center">
         <h1 class="my-3 p-2">${name}</h1>
-        <img src="${image}" class="rounded rounded-3" class="images" />
+        <img src="${image}" class="images rounded rounded-3" />
         <span class="fs-5 mt-2 p-1">${origin}</span>
         <span class="fs-5 mt-2 p-1">${status}</span>
       </div>`;
