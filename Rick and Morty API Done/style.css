@@ -1,0 +1,36 @@
+body {
+  background-color: #1e1e1e !important;
+}
+.content {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.images {
+  max-height: 350px;
+}
+
+.characterContainer {
+  max-width: 350px;
+}
+
+.btn {
+  min-width: 215px;
+  min-height: 55px;
+  max-height: 50px !important;
+}
+
+#pagination {
+  min-width: 700px;
+}
+
+#searchbar {
+  min-height: 50px;
+  min-width: 450px;
+}
+
+.hidden {
+  display: none !important;
+}
