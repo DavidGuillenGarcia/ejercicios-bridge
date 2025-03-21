@@ -6,8 +6,13 @@ body {
   height: 100vh;
 }
 
+.tittle-container {
+  height: 12vh;
+}
+
 .quiz-content {
-  min-width: 95%;
+  width: 96%;
+  height: 78vh;
 }
 
 .form-check {
@@ -27,7 +32,7 @@ body {
 }
 
 .question {
-  min-height: 125px;
+  height: 22vh;
 }
 
 .btn {

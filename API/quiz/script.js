@@ -45,7 +45,7 @@ window.onload = () => {
     }
 
     let newQuestion = `<div id="question${questionId}" class="hidden question-card"> <div class="question-text text-light mt-1 d-flex justify-content-center align-items-center px-3">
-            <span class="fs-4 text-question">${question}</span>
+            <span class="fs-2 text-question font-weight-bold">${question}</span>
           </div>
   
          <div
@@ -53,62 +53,34 @@ window.onload = () => {
           >
               <div class="quiz-question-row">
                 <div
-                  class="question d-flex justify-content-between align-items-center px-4 bg-danger text-light m-3 rounded rounded-3"
+                  class="btn question d-flex justify-content-center align-items-center px-4 bg-danger text-light m-3 rounded rounded-3" name="${checkResult[0]}"
                 >
-                  <label class="form-check-label" for="radio1">
+                  <label class="form-check-label fs-3" for="radio1">
                     ${optionsRandomized[0]}
                   </label>
-                  <input
-                    class="form-check-input me-2"
-                    type="radio"
-                    value="${checkResult[0]}"
-                    name="flexRadioDefault"
-                    id="radio1"
-                  />
                 </div>
                 <div
-                  class="question d-flex justify-content-between align-items-center px-4 bg-info text-light m-3 rounded rounded-3"
+                  class="btn question d-flex justify-content-center align-items-center px-4 bg-info text-light m-3 rounded rounded-3 name="${checkResult[1]}"
                 >
-                  <label class="form-check-label" for="radio2">
+                  <label class="form-check-label fs-3" for="radio2">
                     ${optionsRandomized[1]}
                   </label>
-                  <input
-                    class="form-check-input me-2"
-                    type="radio"
-                     value="${checkResult[1]}"
-                    name="flexRadioDefault"
-                    id="radio2"
-                  />
                 </div>
               </div>
               <div class="quiz-question-row">
                 <div
-                  class="question d-flex justify-content-between align-items-center px-4 bg-warning text-light m-3 rounded rounded-3"
+                  class="btn question d-flex justify-content-center align-items-center px-4 bg-warning text-light m-3 rounded rounded-3" name="${checkResult[2]}"
                 >
-                  <label class="form-check-label" for="radio3">
+                  <label class="form-check-label fs-3" for="radio3">
                      ${optionsRandomized[2]}
                   </label>
-                  <input
-                    class="form-check-input me-2"
-                    type="radio"
-                     value="${checkResult[2]}"
-                    name="flexRadioDefault"
-                    id="radio3"
-                  />
                 </div>
                 <div
-                  class="question d-flex justify-content-between align-items-center px-4 bg-success text-light m-3 rounded rounded-3"
+                  class="btn question d-flex justify-content-center align-items-center px-4 bg-success text-light m-3 rounded rounded-3 name="${checkResult[3]}"
                 >
-                  <label class="form-check-label" for="radio4">
+                  <label class="form-check-label fs-3" for="radio4">
                      ${optionsRandomized[3]}
                   </label>
-                  <input
-                    class="form-check-input me-2"
-                    type="radio"
-                     value="${checkResult[3]}"
-                    name="flexRadioDefault"
-                    id="radio4"
-                  />
                 </div>
               </div>
             </div>

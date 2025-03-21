@@ -20,15 +20,21 @@
   <script src="script.js"></script>
   <body>
     <div
-      class="content d-flex justify-content-center align-items-center flex-column"
+      class="content d-flex align-items-center flex-column justify-content-around"
     >
-      <h1 class="m-4 text-light">Videogame Quiz</h1>
-      <div class="quiz-content shadow rounded rounded-3 fs-5 bg-dark">
+      <div class="tittle-container d-flex align-items-center">
+        <h1 class="m-4 text-light">Videogame Quiz</h1>
+      </div>
+      <div
+        class="quiz-content shadow rounded rounded-3 fs-5 bg-dark d-flex justify-content-around flex-column"
+      >
         <div
           id="quiz-container"
           class="quiz-container d-flex flex-column align-items-center align-content-between"
         ></div>
-        <div class="buttons d-flex justify-content-around pb-4">
+        <div
+          class="buttons d-flex justify-content-center align-items-center pb-4"
+        >
           <input
             id="sendBtn"
             type="button"
