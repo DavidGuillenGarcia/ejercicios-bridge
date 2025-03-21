@@ -7,11 +7,15 @@ body {
 }
 
 .quiz-content {
-  min-width: 80%;
+  min-width: 95%;
 }
 
 .form-check {
   min-height: 300px;
+}
+
+.quiz-container {
+  min-width: 90%;
 }
 
 .quiz-questions {
@@ -19,21 +23,16 @@ body {
 }
 
 .quiz-question-row {
-  min-width: 80%;
+  min-width: 50%;
 }
 
 .question {
   min-height: 125px;
-  min-width: 500;
 }
 
 .btn {
   min-width: 215px;
   min-height: 55px;
-}
-
-.text-question {
-  max-width: 600px !important;
 }
 
 .question-text {
@@ -42,4 +41,8 @@ body {
 
 .hidden {
   display: none !important;
+}
+
+.question-card {
+  min-width: 95%;
 }

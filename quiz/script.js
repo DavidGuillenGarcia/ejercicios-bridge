@@ -44,12 +44,12 @@ window.onload = () => {
       }
     }
 
-    let newQuestion = `<div id="question${questionId}" class="hidden"> <div class="question-text text-light mt-5 d-flex justify-content-center align-items-center">
+    let newQuestion = `<div id="question${questionId}" class="hidden question-card"> <div class="question-text text-light mt-1 d-flex justify-content-center align-items-center px-3">
             <span class="fs-4 text-question">${question}</span>
           </div>
   
          <div
-            class="form-check quiz d-flex justify-content-center mt-3 py-4 px-2"
+            class="form-check quiz d-flex justify-content-center py-2 ps-0"
           >
               <div class="quiz-question-row">
                 <div
