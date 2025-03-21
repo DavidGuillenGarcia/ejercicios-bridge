@@ -56,7 +56,7 @@ const createNewGraph = () => {
   if (chart) {
     chart.destroy();
   }
-  if (localStorage.getItem("jokes").length > 0) {
+  if (localStorage.getItem("jokes").length > 2) {
     chart = new Chart(ctx, {
       type: "bar",
       data: getDataForGraph(),
