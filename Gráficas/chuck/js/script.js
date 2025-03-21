@@ -7,7 +7,7 @@ const getJoke = () => {
   fetch("https://api.chucknorris.io/jokes/random")
     .then((res) => res.json())
     .then((data) => {
-      jokesArray.push(data.value);
+      jokesArray.push({ id: data.id, text: data.value });
       saveJokes();
       displayJokes();
     });
@@ -18,7 +18,7 @@ const displayJokes = () => {
   jokesArray.forEach((joke, index) => {
     jokeList.innerHTML += `
         <div>
-        <p>${joke}</p>
+        <p>${joke.text}</p>
         <button class='redButton' onclick=deleteJoke(${index})>Eliminar</button>
         </div>
         `;
@@ -46,4 +46,3 @@ const loadJokes = () => {
 
 btnGetJoke.addEventListener("click", getJoke);
 loadJokes();
-
