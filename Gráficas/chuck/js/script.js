@@ -2,7 +2,7 @@ const btnGetJoke = document.getElementById("fetchJoke");
 const jokeList = document.getElementById("jokeList");
 const graph = document.getElementById("graph");
 const ctx = graph.getContext("2d");
-let chart = null;
+let chart;
 
 let jokesArray = [];
 
