@@ -1,0 +1,28 @@
+.content {
+  height: 100vh;
+}
+
+.calculator-content {
+  min-width: 20%;
+  background-color: #272524;
+}
+
+.btn-dark {
+  background-color: #3c3c3c !important;
+  height: 75px !important;
+  width: 75px !important;
+}
+
+.btn-primary {
+  height: 75px !important;
+  width: 75px !important;
+}
+
+.delete-btn {
+  height: 75px !important;
+  width: 158px !important;
+}
+
+.result {
+  background-color: #2f2d2c;
+}
