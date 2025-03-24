@@ -1,5 +1,5 @@
 body {
-  background-color: #1e1e1e !important;
+  background-color: #272524 !important;
 }
 
 .content {
@@ -13,6 +13,7 @@ body {
 .quiz-content {
   width: 96%;
   height: 78vh;
+  background: #2f2d2c;
 }
 
 .form-check {
