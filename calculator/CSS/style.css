@@ -13,14 +13,30 @@
   width: 75px !important;
 }
 
-.btn-primary {
+.btn-dark:hover{
+  background-color: rgba(60,60,60,0.6) !important;
+
+}
+
+.btn {
   height: 75px !important;
   width: 75px !important;
 }
 
-.delete-btn {
-  height: 75px !important;
-  width: 158px !important;
+.delete {
+  background-color: rgb(255,126,0) !important;
+}
+
+.delete:hover {
+  background-color: rgba(255,126,0,0.6) !important;
+}
+
+.operation{
+  background-color: rgba(60,60,60,0.4) !important;
+}
+
+.operation:hover{
+  background-color: rgba(60,60,60,0.2) !important;
 }
 
 .result {
