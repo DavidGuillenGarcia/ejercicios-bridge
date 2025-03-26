@@ -18,7 +18,9 @@ const multiply = (number1, number2) => {
 }
 
 const divide = (number1, number2) => {
-  return stringToInt(number1) / stringToInt(number2);
+  if (number2 != 0){
+    return stringToInt(number1) / stringToInt(number2);
+  }
 }
 
 const power = (number1, number2) => {
@@ -46,7 +48,7 @@ const calc = () => {
         result.innerText = multiply(numbers[0], numbers[1]);
     
       }
-      if (currentOperation == "/"){
+      if (currentOperation == "/" && numbers[1] != 0){
         result.innerText = divide(numbers[0], numbers[1]);
       }
       if (currentOperation == "^"){
@@ -84,11 +86,13 @@ const clearResult = () => {
 
 const deleteLastValue = () => {
   if (result.innerText != 0){
-    result.innerText = result.innerText.substring(1, result.innerText.length, -1);  
+    let newResult = result.innerText.substring(0, result.innerText.length - 1);
+    result.innerHTML = newResult;
     if(result.innerText.length == 0){
       result.innerText = 0;
     }
   }
+ 
 }
 
 const addListeners = () => {
