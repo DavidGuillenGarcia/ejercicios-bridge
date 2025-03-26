@@ -116,3 +116,5 @@ const addListeners = () => {
 }
 
 addListeners();
+
+module.exports = {sum, subtract, multiply, divide, power, squareRoot}; 
