@@ -1,4 +1,12 @@
-// const { sum, subtract, multiply, divide, power, squareRoot } = require('functions');
+const {
+  sum,
+  subtract,
+  multiply,
+  divide,
+  power,
+  squareRoot,
+} = require("functions");
+
 const result = document.getElementById("result");
 let currentOperation;
 
@@ -94,5 +102,3 @@ const addListeners = () => {
 };
 
 addListeners();
-
-console.log(Math.pow(0, 3));
