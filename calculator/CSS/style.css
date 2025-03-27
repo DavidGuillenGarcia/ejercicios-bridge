@@ -3,7 +3,7 @@
 }
 
 .calculator-content {
-  min-width: 20%;
+  min-width: 19%;
   background-color: #272524;
 }
 
@@ -13,9 +13,8 @@
   width: 75px !important;
 }
 
-.btn-dark:hover{
-  background-color: rgba(60,60,60,0.6) !important;
-
+.btn-dark:hover {
+  background-color: rgba(60, 60, 60, 0.6) !important;
 }
 
 .btn {
@@ -24,19 +23,19 @@
 }
 
 .delete {
-  background-color: rgb(255,126,0) !important;
+  background-color: rgb(255, 126, 0) !important;
 }
 
 .delete:hover {
-  background-color: rgba(255,126,0,0.6) !important;
+  background-color: rgba(255, 126, 0, 0.6) !important;
 }
 
-.operation{
-  background-color: rgba(60,60,60,0.4) !important;
+.operation {
+  background-color: rgba(60, 60, 60, 0.4) !important;
 }
 
-.operation:hover{
-  background-color: rgba(60,60,60,0.2) !important;
+.operation:hover {
+  background-color: rgba(60, 60, 60, 0.2) !important;
 }
 
 .result {
