@@ -96,7 +96,7 @@ function handleGuess() {
       "correct"
     );
     endGame();
-  } else if (attempts == 5) {
+  } else if (attempts == 10) {
     attemptsArray.push(userGuess);
     listAttemps();
     setMessage(
