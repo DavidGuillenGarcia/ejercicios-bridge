@@ -9,7 +9,19 @@
   <body>
     <div class="container">
       <h1>¡Adivina el Número! 🤔<br />🎈🎈🎈🎈🎈</h1>
-      <p>He pensado en un número entre 1 y 100. ¿Puedes adivinar cuál es?</p>
+      <h4>Selecciona una dificultad</h4>
+      <div class="select-dificulty">
+        <select name="dificulty" id="dificulty" class="dificulty">
+          <option value="low">Fácil</option>
+          <option value="medium" selected>Medio</option>
+          <option value="hard">Dificil</option>
+        </select>
+      </div>
+
+      <p>
+        He pensado en un número entre 1 y
+        <span id="max-number">100</span>. ¿Puedes adivinar cuál es?
+      </p>
 
       <div class="input-area">
         <label for="guessInput">Tu intento:</label>
@@ -20,7 +32,7 @@
         <p id="message" class="message"></p>
       </div>
 
-      <p id="attempts" class="attempts-info"></p>
+      <p id="attempts" class="attempts-info hidden"></p>
 
       <div id="previous-guesses" class="previous-guesses hidden">
         <h4>Intentos anteriores:</h4>

@@ -6,17 +6,40 @@ const attemptsInfo = document.getElementById("attempts");
 const playAgainButton = document.getElementById("playAgainButton");
 const attemptList = document.getElementById("guessesList");
 const previousGuessesContainer = document.getElementById("previous-guesses");
+const dificulty = document.getElementById("dificulty");
 
 let secretNumber;
 let attempts;
 let attemptsArray = [];
-const MAX_NUMBER = 100;
-const MIN_NUMBER = 1;
+let MIN_NUMBER = 1;
+let MAX_NUMBER;
+
+const setDificulty = (event) => {
+  if (event.target.value == "low") {
+    MAX_NUMBER = 50;
+    document.getElementById("max-number").textContent = MAX_NUMBER;
+    console.log(MAX_NUMBER);
+  }
+  if (event.target.value == "medium") {
+    MAX_NUMBER = 100;
+    document.getElementById("max-number").textContent = MAX_NUMBER;
+    console.log(MAX_NUMBER);
+  }
+  if (event.target.value == "hard") {
+    MAX_NUMBER = 200;
+    document.getElementById("max-number").textContent = MAX_NUMBER;
+    console.log(MAX_NUMBER);
+  }
+  startGame();
+};
 
 function startGame() {
   secretNumber = Math.floor(Math.random() * MAX_NUMBER) + MIN_NUMBER;
   attempts = 0;
-
+  attemptsArray = [];
+  previousGuessesContainer.classList.add("hidden");
+  messageContainer.classList.add("hidden");
+  attemptsInfo.classList.add("hidden");
   message.textContent = "";
   message.className = "message";
   attemptsInfo.textContent = "";
@@ -64,12 +87,10 @@ function handleGuess() {
   }
 
   attempts++;
-  if (attempts >= 10) {
-    endGame();
-  }
   attemptsInfo.textContent = `Intentos: ${attempts}`;
 
   if (userGuess === secretNumber) {
+    attemptsInfo.classList.remove("hidden");
     setMessage(
       `¡Correcto! 🎉 El número era ${secretNumber}. Lo adivinaste en ${attempts} intentos.`,
       "correct"
@@ -84,10 +105,12 @@ function handleGuess() {
     );
     endGame();
   } else if (userGuess < secretNumber) {
+    attemptsInfo.classList.remove("hidden");
     attemptsArray.push(userGuess);
     listAttemps();
     setMessage("¡Demasiado bajo! Intenta un número más alto. 👇", "wrong");
   } else {
+    attemptsInfo.classList.remove("hidden");
     attemptsArray.push(userGuess);
     listAttemps();
     setMessage("¡Demasiado alto! Intenta un número más bajo. 👆", "wrong");
@@ -119,6 +142,7 @@ guessInput.addEventListener("keyup", function (event) {
   }
 });
 
+dificulty.addEventListener("change", setDificulty);
 playAgainButton.addEventListener("click", startGame);
 
 startGame();
