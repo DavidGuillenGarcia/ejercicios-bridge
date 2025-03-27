@@ -94,6 +94,16 @@ function handleGuess() {
     return;
   }
 
+  if (attemptsArray.includes(userGuess)) {
+    setMessage(
+      "¡Este número ya ha sido introducido! Vuelve a introducir uno diferente",
+      "info"
+    );
+    guessInput.value = "";
+    guessInput.focus();
+    return;
+  }
+
   attempts++;
   attemptsInfo.textContent = `Intentos: ${attempts}`;
 
@@ -134,12 +144,12 @@ function handleGuess() {
       "wrong"
     );
     endGame();
-  } else if (userGuess < secretNumber) {
+  } else if (userGuess < secretNumber && !attemptsArray.includes(userGuess)) {
     attemptsInfo.classList.remove("hidden");
     attemptsArray.push(userGuess);
     listAttemps();
     setMessage("¡Demasiado bajo! Intenta un número más alto. 👇", "wrong");
-  } else {
+  } else if (userGuess > secretNumber && !attemptsArray.includes(userGuess)) {
     attemptsInfo.classList.remove("hidden");
     attemptsArray.push(userGuess);
     listAttemps();
