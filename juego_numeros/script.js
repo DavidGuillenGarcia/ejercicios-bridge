@@ -18,6 +18,7 @@ let dificultyStored = "medium";
 let attemptsArray = [];
 let MIN_NUMBER = 1;
 let MAX_NUMBER = 100;
+let storagedRecord;
 
 const setDificulty = (event) => {
   dificultyStored = event.target.value;
@@ -103,24 +104,26 @@ function handleGuess() {
       "correct"
     );
     endGame();
-    let storagedRecord = JSON.parse(localStorage.getItem(dificultyStored));
+    if (localStorage.getItem(dificultyStored)) {
+      storagedRecord = JSON.parse(localStorage.getItem(dificultyStored));
+    }
+
     puntuation.innerText = attempts;
     spanDificulty.innerText = dificultyStored;
     if (attempts < storagedRecord) {
       record.innerText =
         "Enhorabuena has superado el previo record de " +
         storagedRecord +
-        " en la dificultad " +
+        " intentos en la dificultad " +
         dificultyStored;
       localStorage.setItem(dificultyStored, attempts);
-    } else {
+    } else if (attempts > storagedRecord) {
       record.innerText =
         "Lamentablemente no has superado el previo record de " +
         storagedRecord +
         " intentos en la dificultad " +
         dificultyStored;
     }
-
     const myModal = new bootstrap.Modal(document.getElementById("myModal"));
     myModal.show();
   } else if (attempts == 10) {
