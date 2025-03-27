@@ -64,6 +64,9 @@ function handleGuess() {
   }
 
   attempts++;
+  if (attempts >= 10) {
+    endGame();
+  }
   attemptsInfo.textContent = `Intentos: ${attempts}`;
 
   if (userGuess === secretNumber) {
@@ -72,16 +75,22 @@ function handleGuess() {
       "correct"
     );
     endGame();
+  } else if (attempts == 5) {
+    attemptsArray.push(userGuess);
+    listAttemps();
+    setMessage(
+      `Has llegado al límite de intentos y has perdido 😢. El número era ${secretNumber}.`,
+      "wrong"
+    );
+    endGame();
   } else if (userGuess < secretNumber) {
     attemptsArray.push(userGuess);
-    console.log(attemptsArray);
-    setMessage("¡Demasiado bajo! Intenta un número más alto. 👇", "wrong");
     listAttemps();
+    setMessage("¡Demasiado bajo! Intenta un número más alto. 👇", "wrong");
   } else {
     attemptsArray.push(userGuess);
-    console.log(attemptsArray);
-    setMessage("¡Demasiado alto! Intenta un número más bajo. 👆", "wrong");
     listAttemps();
+    setMessage("¡Demasiado alto! Intenta un número más bajo. 👆", "wrong");
   }
 
   if (userGuess !== secretNumber) {

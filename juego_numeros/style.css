@@ -98,10 +98,16 @@ label {
 
 .message.correct {
   color: #28a745; /* Verde */
+  font-size: 22px !important;
 }
 
 .message.wrong {
   color: #dc3545; /* Rojo */
+}
+
+.message.lost {
+  color: #dc3545;
+  font-size: 22px !important;
 }
 
 .message.info {
