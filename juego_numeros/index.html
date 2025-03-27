@@ -13,7 +13,9 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div
+      class="game-container d-flex justify-content-center align-items-center flex-column"
+    >
       <h1>¡Adivina el Número! 🤔<br />🎈🎈🎈🎈🎈</h1>
       <h4>Selecciona una dificultad</h4>
       <div class="select-dificulty">
@@ -49,6 +51,37 @@
       </button>
     </div>
 
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3">
+          <div class="d-flex justify-content-end pe-3 pt-3">
+            <h5 class="modal-title" id="myModalLabel"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div
+            class="modal-body d-flex justify-content-center flex-column align-items-center"
+          >
+            <h1 class="pb-2 mb-3">Puntuación</h1>
+            <h4 class="pb-2 mb-3">
+              Has conseguido ganar : <span id="puntuation"></span> intentos en
+              la dificultad <span id="stored-dificulty"></span>
+            </h4>
+            <h4 id="record" class="pb-2 mb-3"></h4>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

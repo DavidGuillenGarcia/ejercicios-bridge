@@ -13,7 +13,7 @@ body {
   display: none;
 }
 
-.container {
+.game-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,7 +22,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
-  max-width: 400px;
+  max-width: 600px;
   width: 90%;
 }
 
@@ -70,6 +70,7 @@ label {
 #playAgainButton {
   padding: 10px 20px;
   font-size: 1rem;
+  max-width: 200px;
   color: #fff;
   background-color: #28a745; /* Verde */
   border: none;

@@ -7,14 +7,21 @@ const playAgainButton = document.getElementById("playAgainButton");
 const attemptList = document.getElementById("guessesList");
 const previousGuessesContainer = document.getElementById("previous-guesses");
 const dificulty = document.getElementById("dificulty");
+const spanDificulty = document.getElementById("stored-dificulty");
+const myModal = document.getElementById("myModal");
+const puntuation = document.getElementById("puntuation");
+const record = document.getElementById("record");
 
 let secretNumber;
 let attempts;
+let dificultyStored = "medium";
 let attemptsArray = [];
 let MIN_NUMBER = 1;
-let MAX_NUMBER;
+let MAX_NUMBER = 100;
 
 const setDificulty = (event) => {
+  dificultyStored = event.target.value;
+
   if (event.target.value == "low") {
     MAX_NUMBER = 50;
     document.getElementById("max-number").textContent = MAX_NUMBER;
@@ -96,6 +103,26 @@ function handleGuess() {
       "correct"
     );
     endGame();
+    let storagedRecord = JSON.parse(localStorage.getItem(dificultyStored));
+    puntuation.innerText = attempts;
+    spanDificulty.innerText = dificultyStored;
+    if (attempts < storagedRecord) {
+      record.innerText =
+        "Enhorabuena has superado el previo record de " +
+        storagedRecord +
+        " en la dificultad " +
+        dificultyStored;
+      localStorage.setItem(dificultyStored, attempts);
+    } else {
+      record.innerText =
+        "Lamentablemente no has superado el previo record de " +
+        storagedRecord +
+        " intentos en la dificultad " +
+        dificultyStored;
+    }
+
+    const myModal = new bootstrap.Modal(document.getElementById("myModal"));
+    myModal.show();
   } else if (attempts == 10) {
     attemptsArray.push(userGuess);
     listAttemps();
@@ -132,6 +159,11 @@ function endGame() {
   guessInput.disabled = true;
   guessButton.disabled = true;
   playAgainButton.style.display = "inline-block";
+  if (!localStorage.getItem(dificultyStored)) {
+    if (attempts > Number(localStorage.getItem(dificultyStored))) {
+      localStorage.setItem(dificultyStored, attempts);
+    }
+  }
 }
 
 guessButton.addEventListener("click", handleGuess);
