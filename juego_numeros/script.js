@@ -18,6 +18,7 @@ let dificultyStored = "medium";
 let attemptsArray = [];
 let MIN_NUMBER = 1;
 let MAX_NUMBER = 100;
+const MAX_ATTEMPTS = 10;
 let storagedRecord;
 
 const setDificulty = (event) => {
@@ -83,7 +84,49 @@ function handleGuess() {
 
   const userGuess = parseInt(userGuessText);
 
-  if (isNaN(userGuess) || userGuess < MIN_NUMBER || userGuess > MAX_NUMBER) {
+  isTheAttemptNaN(userGuess);
+  isTheAtttempRepeated(userGuess);
+
+  handleWin(userGuess);
+  isTheAtttempLowerOrHigher(userGuess);
+
+  if (userGuess !== secretNumber) {
+    guessInput.value = "";
+    guessInput.focus();
+  }
+}
+
+function setMessage(msg, type) {
+  messageContainer.classList.remove("hidden");
+  message.textContent = msg;
+  message.className = `message ${type}`;
+}
+
+function endGame() {
+  guessInput.disabled = true;
+  guessButton.disabled = true;
+  playAgainButton.style.display = "inline-block";
+  if (!localStorage.getItem(dificultyStored)) {
+    if (attempts > Number(localStorage.getItem(dificultyStored))) {
+      localStorage.setItem(dificultyStored, attempts);
+    }
+  }
+}
+
+const isTheAtttempRepeated = (guess) => {
+  if (attemptsArray.includes(guess)) {
+    setMessage(
+      "¡Este número ya ha sido introducido! Vuelve a introducir uno diferente",
+      "info"
+    );
+    guessInput.value = "";
+    guessInput.focus();
+  }
+  return;
+};
+
+const isTheAttemptNaN = (guess) => {
+  if (isNaN(guess) || guess < MIN_NUMBER || guess > MAX_NUMBER) {
     setMessage(
       `Introduce un número válido entre ${MIN_NUMBER} y ${MAX_NUMBER}.`,
       "info"
@@ -91,23 +134,36 @@ function handleGuess() {
 
     guessInput.value = "";
     guessInput.focus();
-    return;
   }
+  return;
+};
 
-  if (attemptsArray.includes(userGuess)) {
-    setMessage(
-      "¡Este número ya ha sido introducido! Vuelve a introducir uno diferente",
-      "info"
-    );
-    guessInput.value = "";
-    guessInput.focus();
-    return;
+const isTheAtttempLowerOrHigher = (guess) => {
+  if (guess < secretNumber && !attemptsArray.includes(guess)) {
+    addAnAttempt();
+    attemptsInfo.classList.remove("hidden");
+    attemptsArray.push(guess);
+    listAttemps();
+    setMessage("¡Demasiado bajo! Intenta un número más alto. 👇", "wrong");
+    handleLost(guess);
+  } else if (guess > secretNumber && !attemptsArray.includes(guess)) {
+    addAnAttempt();
+    attemptsInfo.classList.remove("hidden");
+    attemptsArray.push(guess);
+    listAttemps();
+    setMessage("¡Demasiado alto! Intenta un número más bajo. 👆", "wrong");
+    handleLost(guess);
   }
+};
 
+const addAnAttempt = () => {
   attempts++;
   attemptsInfo.textContent = `Intentos: ${attempts}`;
+};
 
-  if (userGuess === secretNumber) {
+const handleWin = (guess) => {
+  if (guess === secretNumber) {
+    addAnAttempt();
     attemptsInfo.classList.remove("hidden");
     setMessage(
       `¡Correcto! 🎉 El número era ${secretNumber}. Lo adivinaste en ${attempts} intentos.`,
@@ -136,48 +192,20 @@ function handleGuess() {
     }
     const myModal = new bootstrap.Modal(document.getElementById("myModal"));
     myModal.show();
-  } else if (attempts == 10) {
-    attemptsArray.push(userGuess);
+  }
+};
+
+const handleLost = (guess) => {
+  if (attempts == MAX_ATTEMPTS) {
+    attemptsArray.push(guess);
     listAttemps();
     setMessage(
       `Has llegado al límite de intentos y has perdido 😢. El número era ${secretNumber}.`,
       "wrong"
     );
     endGame();
-  } else if (userGuess < secretNumber && !attemptsArray.includes(userGuess)) {
-    attemptsInfo.classList.remove("hidden");
-    attemptsArray.push(userGuess);
-    listAttemps();
-    setMessage("¡Demasiado bajo! Intenta un número más alto. 👇", "wrong");
-  } else if (userGuess > secretNumber && !attemptsArray.includes(userGuess)) {
-    attemptsInfo.classList.remove("hidden");
-    attemptsArray.push(userGuess);
-    listAttemps();
-    setMessage("¡Demasiado alto! Intenta un número más bajo. 👆", "wrong");
   }
-
-  if (userGuess !== secretNumber) {
-    guessInput.value = "";
-    guessInput.focus();
-  }
-}
-
-function setMessage(msg, type) {
-  messageContainer.classList.remove("hidden");
-  message.textContent = msg;
-  message.className = `message ${type}`;
-}
-
-function endGame() {
-  guessInput.disabled = true;
-  guessButton.disabled = true;
-  playAgainButton.style.display = "inline-block";
-  if (!localStorage.getItem(dificultyStored)) {
-    if (attempts > Number(localStorage.getItem(dificultyStored))) {
-      localStorage.setItem(dificultyStored, attempts);
-    }
-  }
-}
+};
 
 guessButton.addEventListener("click", handleGuess);
 guessInput.addEventListener("keyup", function (event) {
