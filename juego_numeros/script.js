@@ -14,7 +14,7 @@ const record = document.getElementById("record");
 
 let secretNumber;
 let attempts;
-let dificultyStored = "medium";
+let dificultyStored = "media";
 let attemptsArray = [];
 const MIN_NUMBER = 1;
 let MAX_NUMBER = 100;
@@ -22,20 +22,21 @@ const MAX_ATTEMPTS = 10;
 let storagedRecord;
 
 const setDificulty = (event) => {
-  dificultyStored = event.target.value;
-
-  if (event.target.value == "low") {
+  if (event.target.value == 50) {
     MAX_NUMBER = 50;
+    dificultyStored = "fácil";
     document.getElementById("max-number").textContent = MAX_NUMBER;
     console.log(MAX_NUMBER);
   }
-  if (event.target.value == "medium") {
+  if (event.target.value == 100) {
     MAX_NUMBER = 100;
+    dificultyStored = "media";
     document.getElementById("max-number").textContent = MAX_NUMBER;
     console.log(MAX_NUMBER);
   }
-  if (event.target.value == "hard") {
+  if (event.target.value == 200) {
     MAX_NUMBER = 200;
+    dificultyStored = "difícil";
     document.getElementById("max-number").textContent = MAX_NUMBER;
     console.log(MAX_NUMBER);
   }
@@ -49,13 +50,13 @@ function startGame() {
   previousGuessesContainer.classList.add("hidden");
   messageContainer.classList.add("hidden");
   attemptsInfo.classList.add("hidden");
+  playAgainButton.classList.add("hidden");
   message.textContent = "";
   message.className = "message";
   attemptsInfo.textContent = "";
   guessInput.value = "";
   guessInput.disabled = false;
   guessButton.disabled = false;
-  playAgainButton.classList.remove("hidden");
   guessInput.focus();
 
   console.log(`Pssst... el número secreto es ${secretNumber}`);
@@ -105,7 +106,7 @@ function setMessage(msg, type) {
 function endGame() {
   guessInput.disabled = true;
   guessButton.disabled = true;
-  playAgainButton.style.display = "inline-block";
+  playAgainButton.classList.remove("hidden");
   if (!localStorage.getItem(dificultyStored)) {
     if (attempts > Number(localStorage.getItem(dificultyStored))) {
       localStorage.setItem(dificultyStored, attempts);
