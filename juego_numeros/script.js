@@ -11,6 +11,7 @@ const spanDificulty = document.getElementById("stored-dificulty");
 const myModal = document.getElementById("myModal");
 const puntuation = document.getElementById("puntuation");
 const record = document.getElementById("record");
+const hint = document.getElementById("hint");
 
 let secretNumber;
 let attempts;
@@ -20,6 +21,10 @@ const MIN_NUMBER = 1;
 let MAX_NUMBER = 100;
 const MAX_ATTEMPTS = 10;
 let storagedRecord;
+const SHORT_RANGE = 5;
+const LARGE_RANGE = 10;
+const LARGER_RANGE = 15;
+const EVEN_LARGER_RANGE = 25;
 
 const setDificulty = (event) => {
   if (event.target.value == 50) {
@@ -51,6 +56,7 @@ function startGame() {
   messageContainer.classList.add("hidden");
   attemptsInfo.classList.add("hidden");
   playAgainButton.classList.add("hidden");
+  hint.classList.add("hidden");
   message.textContent = "";
   message.className = "message";
   attemptsInfo.textContent = "";
@@ -140,6 +146,8 @@ const isTheAttemptNaN = (guess) => {
 };
 
 const isTheAtttempLowerOrHigher = (guess) => {
+  hint.classList.remove("hidden");
+  checkRange(guess);
   if (guess < secretNumber && !attemptsArray.includes(guess)) {
     addAnAttempt();
     attemptsInfo.classList.remove("hidden");
@@ -163,6 +171,7 @@ const addAnAttempt = () => {
 };
 
 const handleWin = (guess) => {
+  hint.classList.remove("hidden");
   if (guess === secretNumber) {
     addAnAttempt();
     attemptsInfo.classList.remove("hidden");
@@ -205,6 +214,19 @@ const handleLost = (guess) => {
       "wrong"
     );
     endGame();
+  }
+};
+
+const checkRange = (guess) => {
+  let range = Math.abs(guess - secretNumber);
+  if (range <= SHORT_RANGE) {
+    hint.innerText = "Pista: ¡Te quemas 🔥!";
+  } else if (range <= LARGE_RANGE && range > SHORT_RANGE) {
+    hint.innerText = "Pista: Caliente";
+  } else if (range <= LARGER_RANGE && range > LARGE_RANGE) {
+    hint.innerText = "Pista: Templado";
+  } else if (range <= EVEN_LARGER_RANGE) {
+    hint.innerText = "Pista: Frio 🥶";
   }
 };
 
