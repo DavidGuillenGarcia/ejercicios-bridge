@@ -16,7 +16,7 @@ let secretNumber;
 let attempts;
 let dificultyStored = "medium";
 let attemptsArray = [];
-let MIN_NUMBER = 1;
+const MIN_NUMBER = 1;
 let MAX_NUMBER = 100;
 const MAX_ATTEMPTS = 10;
 let storagedRecord;
