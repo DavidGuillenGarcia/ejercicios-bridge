@@ -151,6 +151,16 @@ h1 {
 }
 
 .theme {
+  text-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   margin-top: 30px;
   margin-bottom: 7px;
+  gap: 40px;
+  font-size: 1.1em;
+}
+
+.seconds {
+  color: #dc3545;
 }

@@ -7,6 +7,7 @@ const playAgainButton = document.getElementById("playAgainButton");
 const message = document.getElementById("message");
 const hint = document.getElementById("hint");
 const theme = document.getElementById("theme");
+const timeLeft = document.getElementById("time-left");
 
 // --- Variables del Juego ---
 // Usamos emojis para que sea más visual y divertido
@@ -23,6 +24,9 @@ let lockBoard = false; // Bloquea el tablero mientras se comparan o voltean cart
 let totalPairs = cardSymbols[0].length;
 let MAX_MOVES = 5;
 let currentTheme = 0;
+let totalTime = 60;
+let currentTime;
+let lastTime = Date.now();
 
 // --- Funciones ---
 
@@ -96,12 +100,23 @@ function checkForMatch() {
   const symbol2 = card2.dataset.symbol;
 
   if (symbol1 === symbol2) {
-    // Es un par
+    currentTime = Date.now();
+    console.log(currentTime);
+    console.log(lastTime);
+    let diference = currentTime - lastTime;
+    if (diference <= 3000) {
+      console.log("Entra");
+      hint.style.display = "inline-block";
+      hint.innerText = "¡Rápido! ✨";
+      setTimeout(() => {
+        hint.style.display = "none";
+      }, 1000);
+    }
+    lastTime = Date.now();
     disableCards();
   } else {
     // No es un par
     unflipCards();
-
     checkLostCondition();
   }
 }
@@ -121,6 +136,7 @@ function disableCards() {
 // Voltear las cartas de nuevo si no coinciden (con un retraso)
 function unflipCards() {
   hint.style.display = "inline-block";
+  hint.innerText = "¡Oh no! No coinciden 😢";
   setTimeout(() => {
     flippedCards.forEach((card) => card.classList.remove("is-flipped"));
     resetFlippedCards();
@@ -156,7 +172,15 @@ const checkLostCondition = () => {
     message.classList.add("wrong");
     message.innerText = "Has perdido, se te han acabado los movimientos";
     playAgainButton.style.display = "inline-block";
-
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      card.removeEventListener("click", handleCardClick);
+    });
+  } else if (totalTime == 0) {
+    message.style.display = "block";
+    message.classList.add("wrong");
+    message.innerText = "Has perdido, se te han acabado el tiempo";
+    playAgainButton.style.display = "inline-block";
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
       card.removeEventListener("click", handleCardClick);
@@ -169,9 +193,22 @@ const checkTheme = (event) => {
   startGame();
 };
 
+const checkTimer = () => {
+  totalTime--;
+  timeLeft.innerText = totalTime;
+  if (totalTime == 0) {
+    clearInterval(setTimer);
+    checkLostCondition();
+  }
+};
+
+const setTimer = setInterval(checkTimer, 1000);
+
 // Iniciar o reiniciar el juego
 function startGame() {
   // Resetear variables
+  totalTime = 60;
+  timeLeft.innerText = totalTime;
   moves = 0;
   matchedPairs = 0;
   flippedCards = [];

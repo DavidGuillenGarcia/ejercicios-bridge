@@ -10,6 +10,9 @@
     <div class="container">
       <h1>Juego de Memoria 🧠</h1>
       <div class="theme">
+        <p class="time">
+          Tiempo restante: <span id="time-left" class="seconds">60</span>
+        </p>
         <select name="theme" id="theme" class="theme-select">
           <option value="0">Frutas</option>
           <option value="1">Comidas</option>
@@ -24,7 +27,7 @@
         </p>
       </div>
       <div class="hint">
-        <span id="hint" style="display: none">¡Oh no! No coinciden 😢</span>
+        <span id="hint" style="display: none"></span>
       </div>
       <div id="game-board" class="game-board">
         <!-- Las cartas se generarán aquí con JavaScript -->
