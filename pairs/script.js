@@ -6,17 +6,23 @@ const totalPairsDisplay = document.getElementById("total-pairs");
 const playAgainButton = document.getElementById("playAgainButton");
 const message = document.getElementById("message");
 const hint = document.getElementById("hint");
+const theme = document.getElementById("theme");
 
 // --- Variables del Juego ---
 // Usamos emojis para que sea más visual y divertido
-const cardSymbols = ["🍎", "🍌", "🍇", "🍓", "🍒", "🍑", "🍍", "🥝"];
+const cardSymbols = [
+  ["🍎", "🍌", "🍇", "🍓", "🍒", "🍑", "🍍", "🥝"],
+  ["🍕", "🍔", "🍟", "🍦", "🍩", "🍪", "🍣", "🌮"],
+  ["🐶", "🐱", "🐦", "🦊", "🐻", "🐼", "🦁", "🐯"],
+];
 let cards = []; // Array para guardar la información de cada carta
 let flippedCards = []; // Almacena las 2 cartas volteadas temporalmente
 let matchedPairs = 0;
 let moves = 0;
 let lockBoard = false; // Bloquea el tablero mientras se comparan o voltean cartas
-let totalPairs = cardSymbols.length;
+let totalPairs = cardSymbols[0].length;
 let MAX_MOVES = 5;
+let currentTheme = 0;
 
 // --- Funciones ---
 
@@ -33,7 +39,10 @@ function shuffle(array) {
 // Crear el tablero de juego
 function createBoard() {
   // Duplica los símbolos para tener pares y barájalos
-  const shuffledSymbols = shuffle([...cardSymbols, ...cardSymbols]);
+  const shuffledSymbols = shuffle([
+    ...cardSymbols[currentTheme],
+    ...cardSymbols[currentTheme],
+  ]);
   totalPairsDisplay.textContent = totalPairs; // Muestra el total de pares
   gameBoard.innerHTML = ""; // Limpia el tablero anterior
 
@@ -155,6 +164,11 @@ const checkLostCondition = () => {
   }
 };
 
+const checkTheme = (event) => {
+  currentTheme = event.target.value;
+  startGame();
+};
+
 // Iniciar o reiniciar el juego
 function startGame() {
   // Resetear variables
@@ -175,6 +189,7 @@ function startGame() {
 }
 
 // --- Event Listeners ---
+theme.addEventListener("change", checkTheme);
 playAgainButton.addEventListener("click", startGame);
 
 // --- Iniciar el juego al cargar la página ---
