@@ -45,6 +45,7 @@ const checkColor = (event) => {
     setMessage("Wrong color better luck next time", "wrong");
     playAgainButton.classList.remove("hidden");
     playSequenceButton.classList.add("hidden");
+    removeListeners();
   }
 };
 
@@ -76,7 +77,7 @@ const addListeners = () => {
 
 const checkWin = () => {
   if (currentLevel == MAX_LEVEL) {
-    setMessage("You successfully complete all the levels!", "corrrect");
+    setMessage("You successfully complete all the levels!", "correct");
     playSequenceButton.classList.add("hidden");
     playAgainButton.classList.remove("hidden");
   }
@@ -84,7 +85,7 @@ const checkWin = () => {
 
 const setMessage = (messageText, type) => {
   message.innerText = messageText;
-  message.classList.remove("hidden");
+  messageContainer.classList.remove("hidden");
   message.classList.add(type);
 };
 
@@ -97,6 +98,7 @@ const removeListeners = () => {
 const startGame = () => {
   messageContainer.classList.add("hidden");
   playAgainButton.classList.add("hidden");
+  playSequenceButton.classList.remove("hidden");
   colorsRandomized = [];
   numberOfColors = 3;
   currentLevel = 1;
