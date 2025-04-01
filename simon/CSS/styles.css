@@ -10,6 +10,12 @@
 .simon-btn {
   min-width: 49.5% !important;
   min-height: 19vh !important;
+  transition: 0s 0.4s !important;
+}
+
+.simon-btn:active {
+  opacity: 0.4 !important;
+  transition: 0s !important;
 }
 
 .btn-row {

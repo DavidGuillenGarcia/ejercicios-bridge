@@ -40,6 +40,7 @@ const checkColor = (event) => {
       currentLevel++;
       level.innerText = currentLevel;
       checkWin();
+      removeListeners();
     }
   } else {
     setMessage("Wrong color better luck next time", "wrong");
@@ -55,8 +56,8 @@ async function wait(ms) {
 async function playSequence() {
   removeListeners();
   console.log("Mostrando secuencia:", colorsRandomized);
-  const flashDuration = 700;
-  const pauseDuration = 700;
+  const flashDuration = 600;
+  const pauseDuration = 600;
   for (const color of colorsRandomized) {
     const colorBox = document.getElementById(color);
     if (colorBox) {
@@ -76,7 +77,7 @@ const addListeners = () => {
 };
 
 const checkWin = () => {
-  if (currentLevel == MAX_LEVEL) {
+  if (currentLevel === MAX_LEVEL) {
     setMessage("You successfully complete all the levels!", "correct");
     playSequenceButton.classList.add("hidden");
     playAgainButton.classList.remove("hidden");
@@ -99,6 +100,7 @@ const startGame = () => {
   messageContainer.classList.add("hidden");
   playAgainButton.classList.add("hidden");
   playSequenceButton.classList.remove("hidden");
+  level.innerText = 1;
   colorsRandomized = [];
   numberOfColors = 3;
   currentLevel = 1;
