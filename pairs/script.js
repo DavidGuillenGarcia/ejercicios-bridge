@@ -22,7 +22,7 @@ let matchedPairs = 0;
 let moves = 0;
 let lockBoard = false; // Bloquea el tablero mientras se comparan o voltean cartas
 let totalPairs = cardSymbols[0].length;
-let MAX_MOVES = 5;
+let MAX_MOVES = 25;
 let currentTheme = 0;
 const MAX_TIME = 120;
 let timeLeft = MAX_TIME;
@@ -160,27 +160,21 @@ function incrementMoves() {
 // Comprobar si se han encontrado todos los pares
 function checkWinCondition() {
   if (matchedPairs === totalPairs) {
-    message.style.display = "block";
-    message.classList.add("correct");
-    message.innerText = "¡Felicidades! ¡Has encontrado todos los pares!";
+    setMessage("¡Felicidades! ¡Has encontrado todos los pares!", "correct");
     playAgainButton.style.display = "inline-block";
   }
 }
 
 const checkLostCondition = () => {
   if (moves == MAX_MOVES) {
-    message.style.display = "block";
-    message.classList.add("wrong");
-    message.innerText = "Has perdido, se te han acabado los movimientos";
+    setMessage("Has perdido, se te han acabado los movimientos", "wrong");
     playAgainButton.style.display = "inline-block";
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
       card.removeEventListener("click", handleCardClick);
     });
-  } else if (timeLEft == 0) {
-    message.style.display = "block";
-    message.classList.add("wrong");
-    message.innerText = "Has perdido, se te han acabado el tiempo";
+  } else if (timeLeft == 0) {
+    setMessage("Has perdido, se te han acabado el tiempo", "wrong");
     playAgainButton.style.display = "inline-block";
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
@@ -204,6 +198,12 @@ const checkTimer = () => {
 };
 
 const setTimer = setInterval(checkTimer, 1000);
+
+const setMessage = (messageText, type) => {
+  message.style.display = "block";
+  message.classList.add(type);
+  message.innerText = messageText;
+};
 
 // Iniciar o reiniciar el juego
 function startGame() {
