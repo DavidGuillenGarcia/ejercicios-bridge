@@ -3,7 +3,7 @@
 }
 
 .simon-container {
-  min-height: 57vh;
+  min-height: 70vh;
   width: 95%;
 }
 
@@ -31,4 +31,12 @@
 
 .play-again-btn {
   width: 225px !important;
+}
+
+.message.correct {
+  color: #388e3c; /* Verde */
+}
+
+.message.wrong {
+  color: #dc3545; /* Rojo */
 }

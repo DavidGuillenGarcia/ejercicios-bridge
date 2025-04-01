@@ -1,33 +1,61 @@
-const message = document.getElementById("messsage");
+const message = document.getElementById("message");
 const messageContainer = document.getElementById("message-container");
 const simonButtons = document.querySelectorAll(".simon-btn");
 const playAgainButton = document.getElementById("play-again-btn");
+const playSequenceButton = document.getElementById("start-btn");
+const levelContainer = document.getElementById("level-container");
+const level = document.getElementById("level");
 
 const colors = ["red", "green", "yellow", "blue"];
 let colorsRandomized = [];
+console.log(colorsRandomized.length);
 let numberOfColors = 3;
 let count = 0;
+let guessedCount = 0;
+let currentLevel = 1;
+const MAX_LEVEL = 5;
 
 const randomizeColors = () => {
-  for (let i = 0; i < numberOfColors; i++) {
-    let randomPosition = Math.floor(Math.random() * numberOfColors);
-    console.log(randomPosition);
-    colorsRandomized.push(colors[randomPosition]);
+  if (colorsRandomized.length == 0) {
+    for (let i = 0; i < numberOfColors; i++) {
+      let randomPosition = Math.floor(Math.random() * numberOfColors);
+      colorsRandomized.push(colors[randomPosition]);
+    }
+    console.log(colorsRandomized);
+  } else {
+    numberOfColors++;
+    let newColor = Math.floor(Math.random() * colors.length);
+    colorsRandomized.push(colors[newColor]);
+    console.log(colorsRandomized);
   }
-  console.log(colorsRandomized);
 };
 
 const checkColor = (event) => {
-  console.log(event.target.id);
+  if (event.target.id == colorsRandomized[guessedCount]) {
+    console.log("Correcto");
+    guessedCount++;
+    if (colorsRandomized.length == guessedCount) {
+      randomizeColors();
+      guessedCount = 0;
+      currentLevel++;
+      level.innerText = currentLevel;
+      checkWin();
+    }
+  } else {
+    setMessage("Wrong color better luck next time", "wrong");
+    playAgainButton.classList.remove("hidden");
+    playSequenceButton.classList.add("hidden");
+  }
 };
 
 async function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 async function playSequence() {
+  removeListeners();
   console.log("Mostrando secuencia:", colorsRandomized);
-  const flashDuration = 1300;
-  const pauseDuration = 1300;
+  const flashDuration = 700;
+  const pauseDuration = 700;
   for (const color of colorsRandomized) {
     const colorBox = document.getElementById(color);
     if (colorBox) {
@@ -37,14 +65,44 @@ async function playSequence() {
       await wait(pauseDuration);
     }
   }
+  addListeners();
 }
 
 const addListeners = () => {
   simonButtons.forEach((btn) => {
     btn.addEventListener("click", checkColor);
   });
-  playAgainButton.addEventListener("click", playSequence);
 };
 
-randomizeColors();
-addListeners();
+const checkWin = () => {
+  if (currentLevel == MAX_LEVEL) {
+    setMessage("You successfully complete all the levels!", "corrrect");
+    playSequenceButton.classList.add("hidden");
+    playAgainButton.classList.remove("hidden");
+  }
+};
+
+const setMessage = (messageText, type) => {
+  message.innerText = messageText;
+  message.classList.remove("hidden");
+  message.classList.add(type);
+};
+
+const removeListeners = () => {
+  simonButtons.forEach((btn) => {
+    btn.removeEventListener("click", checkColor);
+  });
+};
+
+const startGame = () => {
+  messageContainer.classList.add("hidden");
+  playAgainButton.classList.add("hidden");
+  colorsRandomized = [];
+  numberOfColors = 3;
+  currentLevel = 1;
+  randomizeColors();
+  playAgainButton.addEventListener("click", startGame);
+  playSequenceButton.addEventListener("click", playSequence);
+};
+
+startGame();

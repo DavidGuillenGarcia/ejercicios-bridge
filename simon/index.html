@@ -19,9 +19,12 @@
       <div
         class="simon-container shadow shadow-lg rounded rounded-4 d-flex align-items-center justify-content-around flex-column"
       >
-        <div class="my-3"><span class="fs-1">Simon</span></div>
-        <div id="message-container" class="message-container hidden">
-          <span id="message"></span>
+        <div class="mt-3"><span class="fs-1">Simon</span></div>
+        <div id="level-container mt-3" class="level-container">
+          <p class="fs-4">Level: <span id="level">1</span></p>
+        </div>
+        <div id="message-container" class="message-container mb-2">
+          <span id="message" class="message fs-4"></span>
         </div>
         <div class="btn-simon-group">
           <div class="btn-row d-flex justify-content-between">
@@ -57,7 +60,13 @@
           <input
             id="play-again-btn"
             type="button"
-            value="Start"
+            value="Play again"
+            class="btn btn-lg btn-primary play-again-btn"
+          />
+          <input
+            id="start-btn"
+            type="button"
+            value="Start sequence"
             class="btn btn-lg btn-primary play-again-btn"
           />
         </div>
