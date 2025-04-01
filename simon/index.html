@@ -20,32 +20,42 @@
         class="simon-container shadow shadow-lg rounded rounded-4 d-flex align-items-center justify-content-around flex-column"
       >
         <div class="mt-3"><span class="fs-1">Simon</span></div>
-
+        <div class="message-container hidden">
+          <span id="message"></span>
+        </div>
         <div class="btn-simon-group">
           <div class="btn-row d-flex justify-content-between">
             <input
               type="button"
               name="green"
-              class="btn btn-success m-1 rounded-4"
+              class="btn btn-success simon-btn m-1 rounded-4"
             />
             <input
               type="button"
               name="red"
-              class="btn btn-danger m-1 rounded-4"
+              class="btn btn-danger simon-btn m-1 rounded-4"
             />
           </div>
           <div class="btn-row d-flex justify-content-between">
             <input
               type="button"
               name="yellow"
-              class="btn btn-warning m-1 rounded-4"
+              class="btn btn-warning simon-btn m-1 rounded-4"
             />
             <input
               type="button"
               name="blue"
-              class="btn btn-primary m-1 rounded-4"
+              class="btn btn-primary simon-btn m-1 rounded-4"
             />
           </div>
+        </div>
+        <div class="play-again py-4 hidden">
+          <input
+            id="play-again-btn"
+            type="button"
+            value="Play again"
+            class="btn btn-lg btn-primary play-again-btn"
+          />
         </div>
       </div>
     </div>

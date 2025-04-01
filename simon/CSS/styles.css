@@ -7,7 +7,7 @@
   width: 95%;
 }
 
-.btn {
+.simon-btn {
   min-width: 49.5% !important;
   min-height: 19vh !important;
 }
@@ -23,4 +23,12 @@
 
 .pressed {
   opacity: 0.4;
+}
+
+.hidden {
+  display: none;
+}
+
+.play-again-btn {
+  width: 225px !important;
 }
