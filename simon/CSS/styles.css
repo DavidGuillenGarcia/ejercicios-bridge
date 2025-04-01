@@ -1,0 +1,26 @@
+.content {
+  min-height: 100vh;
+}
+
+.simon-container {
+  min-height: 53vh;
+  width: 95%;
+}
+
+.btn {
+  min-width: 49.5% !important;
+  min-height: 19vh !important;
+}
+
+.btn-row {
+  min-height: 20vh;
+  min-width: 97%;
+}
+
+.btn-simon-group {
+  min-width: 98% !important;
+}
+
+.pressed {
+  opacity: 0.4;
+}
