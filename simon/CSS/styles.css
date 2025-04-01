@@ -3,7 +3,7 @@
 }
 
 .simon-container {
-  min-height: 53vh;
+  min-height: 57vh;
   width: 95%;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .pressed {
-  opacity: 0.4;
+  opacity: 0.4 !important;
 }
 
 .hidden {
