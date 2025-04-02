@@ -35,6 +35,8 @@ const checkColor = (event) => {
     console.log("Correcto");
     guessedCount++;
     if (colorsRandomized.length == guessedCount) {
+      setMessage("You nailed the sequence!", "correct");
+      messageContainer.classList.remove("hidden");
       randomizeColors();
       guessedCount = 0;
       currentLevel++;
@@ -54,6 +56,7 @@ async function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 async function playSequence() {
+  messageContainer.classList.add("hidden");
   removeListeners();
   console.log("Mostrando secuencia:", colorsRandomized);
   const flashDuration = 600;
