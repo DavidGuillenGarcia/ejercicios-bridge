@@ -4,12 +4,12 @@
 
 .simon-container {
   min-height: 70vh;
-  width: 95%;
+  width: 490px;
 }
 
 .simon-btn {
-  min-width: 49.5% !important;
-  min-height: 19vh !important;
+  min-width: 45% !important;
+  height: 19vh !important;
   transition: 0s 0.4s !important;
 }
 
@@ -18,9 +18,25 @@
   transition: 0s !important;
 }
 
+#green:hover {
+  background-color: #198754 !important;
+}
+
+#red:hover {
+  background-color: #dc3545 !important;
+}
+
+#blue:hover {
+  background-color: #0d6efd !important;
+}
+
+#yellow:hover {
+  background-color: #ffc107 !important;
+}
+
 .btn-row {
-  min-height: 20vh;
-  min-width: 97%;
+  height: 20vh;
+  gap: 4px;
 }
 
 .btn-simon-group {

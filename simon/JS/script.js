@@ -58,7 +58,6 @@ async function wait(ms) {
 async function playSequence() {
   messageContainer.classList.add("hidden");
   removeListeners();
-  console.log("Mostrando secuencia:", colorsRandomized);
   const flashDuration = 600;
   const pauseDuration = 600;
   for (const color of colorsRandomized) {
