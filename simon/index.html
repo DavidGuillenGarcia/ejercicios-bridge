@@ -20,13 +20,13 @@
         class="simon-container shadow shadow-lg rounded rounded-4 d-flex align-items-center justify-content-around flex-column"
       >
         <div class="mt-3"><span class="fs-1">Simon</span></div>
-        <div id="level-container mt-3" class="level-container">
+        <div id="level-container" class="level-container hidden">
           <p class="fs-4">Level: <span id="level">1</span></p>
         </div>
         <div id="message-container" class="message-container mb-2">
           <span id="message" class="message fs-4"></span>
         </div>
-        <div class="btn-simon-group">
+        <div id="simon-btn-group" class="btn-simon-group hidden">
           <div class="btn-row d-flex justify-content-center">
             <input
               id="green"
@@ -56,18 +56,35 @@
             />
           </div>
         </div>
-        <div id="play-again-container" class="play-again py-4">
+        <div
+          id="simon-form"
+          class="d-flex justify-content-center align-items-center flex-column"
+        >
+          <span class="fs-5 my-1">Enter your name</span>
           <input
-            id="play-again-btn"
-            type="button"
-            value="Play again"
-            class="btn btn-lg btn-primary play-again-btn"
+            type="text"
+            name="name"
+            id="username"
+            class="form-control my-1"
           />
+          <span class="fs-5 mt-2 mb-1">Select your dificulty</span>
+          <select name="dificulty" id="dificulty" class="form-select mt-1 mb-2">
+            <option value="5">Normal</option>
+            <option value="Infinity">Endless</option>
+          </select>
+        </div>
+        <div id="play-again-container" class="play-again py-4">
           <input
             id="start-btn"
             type="button"
+            value="Start playing"
+            class="btn btn-primary play-again-btn"
+          />
+          <input
+            id="start-sequence-btn"
+            type="button"
             value="Start sequence"
-            class="btn btn-lg btn-primary play-again-btn"
+            class="btn btn-primary play-again-btn hidden"
           />
         </div>
       </div>

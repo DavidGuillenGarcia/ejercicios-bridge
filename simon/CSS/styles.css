@@ -3,7 +3,7 @@
 }
 
 .simon-container {
-  min-height: 70vh;
+  max-height: 70vh;
   width: 490px;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .play-again-btn {
-  width: 225px !important;
+  width: 200px !important;
 }
 
 .message.correct {

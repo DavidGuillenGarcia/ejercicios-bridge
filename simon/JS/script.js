@@ -1,10 +1,14 @@
 const message = document.getElementById("message");
 const messageContainer = document.getElementById("message-container");
 const simonButtons = document.querySelectorAll(".simon-btn");
-const playAgainButton = document.getElementById("play-again-btn");
-const playSequenceButton = document.getElementById("start-btn");
+const startButton = document.getElementById("start-btn");
+const playSequenceButton = document.getElementById("start-sequence-btn");
 const levelContainer = document.getElementById("level-container");
 const level = document.getElementById("level");
+const dificulty = document.getElementById("dificulty");
+const username = document.getElementById("username");
+const userForm = document.getElementById("simon-form");
+const simonContainer = document.getElementById("simon-btn-group");
 
 const colors = ["red", "green", "yellow", "blue"];
 let colorsRandomized = [];
@@ -13,7 +17,7 @@ let numberOfColors = 3;
 let count = 0;
 let guessedCount = 0;
 let currentLevel = 1;
-const MAX_LEVEL = 5;
+let currentDificulty = 5;
 
 const randomizeColors = () => {
   if (colorsRandomized.length == 0) {
@@ -45,7 +49,7 @@ const checkColor = (event) => {
     }
   } else {
     setMessage("Wrong color better luck next time", "wrong");
-    playAgainButton.classList.remove("hidden");
+    startButton.classList.remove("hidden");
     playSequenceButton.classList.add("hidden");
     removeListeners();
   }
@@ -79,10 +83,11 @@ const addListeners = () => {
 };
 
 const checkWin = () => {
-  if (currentLevel === MAX_LEVEL) {
+  if (currentLevel === currentDificulty) {
+    level.innerText = currentLevel;
     setMessage("You successfully complete all the levels!", "correct");
     playSequenceButton.classList.add("hidden");
-    playAgainButton.classList.remove("hidden");
+    startButton.classList.remove("hidden");
   }
 };
 
@@ -98,17 +103,34 @@ const removeListeners = () => {
   });
 };
 
+const checkDificulty = (event) => {
+  currentDificulty = event.target.value;
+  console.log(currentDificulty);
+};
+
+const createUser = () => {
+  localStorage.setItem("Username", username.value);
+  startButton.removeEventListener("click", createUser);
+  startButton.addEventListener("click", startGame);
+  simonContainer.classList.remove("hidden");
+  userForm.classList.add("hidden");
+  userForm.classList.remove("d-flex");
+  startGame();
+};
+
 const startGame = () => {
+  startButton.value = "Play again";
   messageContainer.classList.add("hidden");
-  playAgainButton.classList.add("hidden");
+  startButton.classList.add("hidden");
   playSequenceButton.classList.remove("hidden");
+  levelContainer.classList.remove("hidden");
   level.innerText = 1;
   colorsRandomized = [];
   numberOfColors = 3;
   currentLevel = 1;
   randomizeColors();
-  playAgainButton.addEventListener("click", startGame);
   playSequenceButton.addEventListener("click", playSequence);
 };
 
-startGame();
+startButton.addEventListener("click", createUser);
+dificulty.addEventListener("change", checkDificulty);
