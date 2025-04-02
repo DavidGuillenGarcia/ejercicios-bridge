@@ -40,7 +40,6 @@ const checkColor = (event) => {
       randomizeColors();
       guessedCount = 0;
       currentLevel++;
-      level.innerText = currentLevel;
       checkWin();
       removeListeners();
     }
@@ -56,6 +55,7 @@ async function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 async function playSequence() {
+  level.innerText = currentLevel;
   messageContainer.classList.add("hidden");
   removeListeners();
   const flashDuration = 600;
